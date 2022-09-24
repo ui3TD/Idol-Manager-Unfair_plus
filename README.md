@@ -1,3 +1,4 @@
+<img src="https://github.com/ui3TD/Idol-Manager-Unfair_plus/blob/main/Unfair_plus/thumb.png" width=300></img>
 ## Unfair_plus
 
 This mod is a game overhaul. It will change the behavior of the base game significantly. Remember to make backups of any files you replace. 
