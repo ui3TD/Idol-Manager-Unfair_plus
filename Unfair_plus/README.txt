@@ -5,6 +5,11 @@ Assembly-CSharp.dll
 \Constants\constants.json
 \Idol\traits.json
 \Shows\mc.json
+\Shows\genre.json
+\Shows\medium.json
+\Singles\choreography.json
+\Singles\genres.json
+\Singles\lyrics.json
 
 Installation Instructions:
 1. Copy mod folder into the mod directory. On Windows, that's c:\Users\username\AppData\LocalLow\Glitch Pitch\Idol Manager\Mods\
