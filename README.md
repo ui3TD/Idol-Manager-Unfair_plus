@@ -117,4 +117,4 @@ There have been several changes to fan appeal values of show and single producti
 - Edit to hard mode name and description.
 - Update locked concert tooltip to describe requirement to sell out
 - Changes to single lyrics, genre and choreo appeal values
-- Changes to show media platform and genres
+- Changes to show media platforms and genres
