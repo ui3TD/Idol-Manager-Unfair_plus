@@ -37,32 +37,35 @@ There have been several changes to fan appeal values of show and single producti
 3. Delete the "Assembly-CSharp.dll" file and rename the "Assembly-CSharp_orig.dll" file to replace it.
 4. Disable or delete the mod in Idol Manager.
 
-### Gameplay Rebalancing and Improvements:
+### Quality of Life:
 - Time passes 5x faster to decrease downtime.
+- Home row of keyboard (asdfg...) are hotkeys to open each sidebar tab.
+- Show genres renamed to make more sense.
+
+### Nerfs (things made more challenging):
 - 20000 yen/wk is the expected starting salary for 100% satisfaction so that it's aligned with minimum wage.
 - 20000 yen/wk is the default starting salary so that it's aligned with minimum wage.
+- Concert revenue formula rebalanced so it approaches zero with high ticket prices. This is most impactful in hard mode.
+- Concert venues can only be unlocked if you've sold out the previous venue with a profit.
+- Theater show sales and subscriptions start to decay after 30 days since the last single due to staleness. It's not so severe in easy/normal mode, but more severe in hard mode.
+- Theater subscription revenue decreased by 90%. Most of the revenue goes to the streaming service provider.
+- Show media platform appeal values reduced to encourage usage regardless of group themes.
+- Staff cannot be fired using scandal points within the first month so that you can't just hire and immediately fire staff to get rid of points.
+- World tours are limited to 100 stamina so you can't go to all the countries at once.
+
+### Buffs (things made more forgiving):
 - Probabilty of being lesbian reduced to 6% and probability for bisexuality reduced to 5% if the player is male so that there is less in-group dating. Probabilities unchanged for female players so that they can romance the idols easily.
 - Dating status is visible for underage members so that the player can track gossip. Player cannot flirt with them though.
 - Drama business proposals get 3x the fans so they are more competitive with other methods of gaining fans.
 - Drama and Ad business proposals have their max base stamina reduced to 20 at high levels and their other parameters are scaled accordingly so it's easier to micromanage stamina.
-- Concert revenue formula rebalanced so it approaches zero with high ticket prices. This is most impactful in hard mode.
-- Theater show sales and subscriptions start to decay after 30 days since the last single due to staleness. It's not so severe in easy/normal mode, but more severe in hard mode.
-- Theater subscription revenue decreased by 90%. Most of the revenue goes to the streaming service provider.
-- Each MC fame point gives a boost to new fans, expecially so at high fame so that MCs have much more value late game.
-- Single PVs have success chances increased by 33% so that they are more reliable in mid to late game.
-- Single PV crit success bonus decreased to balance the previous change.
+- Show MC fame points give a boost to new fans, expecially so at high fame so that MCs have much more value late game.
+- Single PVs have success chances increased by 33% so that they are more reliable in mid to late game but the crit success bonus has decreased to balance it.
 - Fake Scandal crit success bonus increased significantly so that it's more enticing. It is the fastest single marketing method to grow fans.
 - When releasing a single, the penalty for a decrease in fame and appeal now only considers past singles of the same group, so that sister groups are more independent.
-- Home row of keyboard (asdfg...) are hotkeys to open each sidebar tab.
-- Staff cannot be fired using scandal points within the first month so that you can't just hire and immediately fire staff to get rid of points.
-- Removed minimum member limit for sister group creation to allow more freedom (it does introduce some imbalance).
-- You can only unlock the next concert venue if you've sold out the previous venue with a profit.
+- Sister group minimum member limit for creation removed to allow more freedom (it does introduce some imbalance).
 - Training vocal/dance stamina reduced to 1/day so that it's a bit more worth it. It takes on average 2 years to recoup on opportunity costs. It's more efficient if the girl is lower in skill or if the girl is in the front of senbatsu.
-- World tours are limited to 100 stamina so you can't go to all the countries at once.
 - World tours give 3.5x more fans to compensate for stamina limitation.
-- Reduced the appeals of show media platforms to encourage usage regardless of group themes.
-- Renamed show genres to make more sense.
-- Overhauled appeal of single genres/lyrics/choreo so that none are clearly better/worse, and so that negative effects are reduced to encourage trying new combinations.
+- Single genres/lyrics/choreo appeals overhauled so that none are clearly better, and so that negative effects are reduced to encourage trying new combinations.
 
 ### Bug Fixes:
 - Fixed senbatsu stats calculation so it doesn't punish you if you don't have enough idols to fill all rows.
