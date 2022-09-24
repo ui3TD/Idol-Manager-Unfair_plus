@@ -1,13 +1,9 @@
 ## Unfair_plus
 ### Conflicts:
-Assembly-CSharp.dll
-
-\Business\business.json
-
-\Constants\constants.json
-
-\Idol\traits.json
-
+Assembly-CSharp.dll<br>
+\Business\business.json<br>
+\Constants\constants.json<br>
+\Idol\traits.json<br>
 \Shows\mc.json
 
 ### Installation Instructions:
