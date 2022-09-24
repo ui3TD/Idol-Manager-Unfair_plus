@@ -45,7 +45,7 @@ There have been several changes to fan appeal values of show and single producti
 - Dating status is visible for underage members so that the player can track gossip. Player cannot flirt with them though.
 - Drama business proposals get 3x the fans so they are more competitive with other methods of gaining fans.
 - Drama and Ad business proposals have their max base stamina reduced to 20 at high levels and their other parameters are scaled accordingly so it's easier to micromanage stamina.
-- Concert attendance formula rebalanced so it approaches zero with high ticket prices. This is most impactful in hard mode.
+- Concert revenue formula rebalanced so it approaches zero with high ticket prices. This is most impactful in hard mode.
 - Theater show sales and subscriptions start to decay after 30 days since the last single due to staleness. It's not so severe in easy/normal mode, but more severe in hard mode.
 - Theater subscription revenue decreased by 90%. Most of the revenue goes to the streaming service provider.
 - Each MC fame point gives a boost to new fans, expecially so at high fame so that MCs have much more value late game.
