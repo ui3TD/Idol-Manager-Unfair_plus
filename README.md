@@ -73,7 +73,7 @@ There have been several changes to fan appeal values of show and single producti
 - Coliseum level concert venues in hard mode increased to 50,000 capacity, but have a base cost increased to 200,000,000 to add more endgame challenge.
 - In hard mode, idols at 10 fame will expect at least 10% of their earnings as salary so that the endgame is a bit more challenging.
 - In hard mode, penalty for low salary satisfaction increased 10x. Each day, if salary gets under 50%, the graduation date moves closer by 10 days. If under 20% then 30 days.
-- In hard mode, audience of TV and Radio shows decrease with fatigue so you can't run shows forever. New fan contribution to audience decreases proportional fatigue squared.
+- In hard mode, audience of TV and Radio shows decrease with fatigue so you can't run shows forever. New fan contribution to audience decreases proportional to fatigue squared.
 - In hard mode, sister group new fans are reduced 5x to be more balanced.
 - In hard mode, player relationships with girls decay each week so you have to talk to them sometimes. -2 to +1 to influence each week depending on salary satisfaction. -1 each week to romance (lose a level every ~2 years). -2 each week to friendship (lose a level every ~1 year).
 
