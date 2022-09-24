@@ -1,0 +1,1373 @@
+mainScript Time_SetState
+if (state == mainScript._time_state.normal)
+{
+	staticVars.dateTimeAddMinutesPerSecond = 250.0;
+	this.TimeControls_Pause.GetComponent<TextMeshProUGUI>().color = mainScript.white32;
+	this.TimeControls_Normal.GetComponent<TextMeshProUGUI>().color = mainScript.green32;
+	this.TimeControls_Fast.GetComponent<TextMeshProUGUI>().color = mainScript.white32;
+	return;
+}
+if (state == mainScript._time_state.fast)
+{
+	staticVars.dateTimeAddMinutesPerSecond = 1000.0;
+	this.TimeControls_Pause.GetComponent<TextMeshProUGUI>().color = mainScript.white32;
+	this.TimeControls_Normal.GetComponent<TextMeshProUGUI>().color = mainScript.white32;
+	this.TimeControls_Fast.GetComponent<TextMeshProUGUI>().color = mainScript.green32;
+}
+
+agency._room DoGirlTraining
+float num = 1f / Mathf.Floor(1440f / (float)(staticVars.dateTimeAddMinutesPerSecond / (double)staticVars.dateTimeDivider));
+
+data_girls.girls Graduation_Date_Update
+if (salarySatisfaction_Percentage < 20)
+{
+	if (staticVars.IsHard() && policies.GetSelectedPolicyValue(policies._type.salary).Value == policies._value.salary_manual)
+	{
+		num -= 27f;
+	}
+	num -= 3f;
+}
+else if (salarySatisfaction_Percentage < 50)
+{
+	if (staticVars.IsHard() && policies.GetSelectedPolicyValue(policies._type.salary).Value == policies._value.salary_manual)
+	{
+		num -= 9f;
+	}
+	num -= 1f;
+}
+
+Groups GetIdolsNeededForNewGroup
+return Groups.CountActiveGroups() + 1;
+
+Groups GetNewFansPerSingle
+if (staticVars.IsHard())
+{
+	num9 /= 5;
+}
+
+Controls Update
+else if (Input.GetKeyDown(KeyCode.A))
+{
+	Camera.main.GetComponent<mainScript>().Data.GetComponent<Tabs_Manager>().OpenTab(Tabs_Manager._tab._type.idols);
+}
+else if (Input.GetKeyDown(KeyCode.S))
+{
+	Camera.main.GetComponent<mainScript>().Data.GetComponent<Tabs_Manager>().OpenTab(Tabs_Manager._tab._type.staff);
+}
+else if (Input.GetKeyDown(KeyCode.D))
+{
+	Camera.main.GetComponent<mainScript>().Data.GetComponent<Tabs_Manager>().OpenTab(Tabs_Manager._tab._type.activities);
+}
+else if (Input.GetKeyDown(KeyCode.F))
+{
+	Camera.main.GetComponent<mainScript>().Data.GetComponent<Tabs_Manager>().OpenTab(Tabs_Manager._tab._type.singles);
+}
+else if (Input.GetKeyDown(KeyCode.G))
+{
+	Camera.main.GetComponent<mainScript>().Data.GetComponent<Tabs_Manager>().OpenTab(Tabs_Manager._tab._type.media);
+}
+else if (Input.GetKeyDown(KeyCode.H))
+{
+	Camera.main.GetComponent<mainScript>().Data.GetComponent<Tabs_Manager>().OpenTab(Tabs_Manager._tab._type.specialEvents);
+}
+else if (Input.GetKeyDown(KeyCode.J))
+{
+	Camera.main.GetComponent<mainScript>().Data.GetComponent<Tabs_Manager>().OpenTab(Tabs_Manager._tab._type.research);
+}
+else if (Input.GetKeyDown(KeyCode.K))
+{
+	Camera.main.GetComponent<mainScript>().Data.GetComponent<Tabs_Manager>().OpenTab(Tabs_Manager._tab._type.policies);
+}
+
+Controls Update
+if (Input.GetKeyDown(KeyCode.F))
+{
+	mainScript.playAudioClip("coin_drop", 0f);
+	resources.Add(resources.type.fans, 10000L);
+	return;
+}
+
+staff._staff CanFire
+return this.UniqueType == staff._staff._unique_type.NONE && this.type != staff._type.player && this.type != staff._type.player_female && (long)this.PointsToFire() <= resources.Get(resources.type.scandalPoints, true) && (staticVars.dateTime - staff.LastFiredDate).TotalDays > (double)staff.FiringCooldown && (staticVars.dateTime - this.HireDate).Days >= 30;
+
+data_girls.girls UpdateRelationshipBasedOnSalary
+if (staticVars.IsHard())
+{
+	if (salarySatisfaction_Percentage >= 80 && this.GetFameLevel() > 1)
+	{
+		float num2 = (float)salarySatisfaction_Percentage / 2000f;
+	}
+	if (salarySatisfaction_Percentage >= 150)
+	{
+		this.Rel_Influence_Points++;
+	}
+	else if (salarySatisfaction_Percentage <= 50)
+	{
+		this.Rel_Influence_Points -= 2;
+	}
+	else if (salarySatisfaction_Percentage <= 100 && this.Rel_Romance_Points >= 1)
+	{
+		this.Rel_Influence_Points--;
+	}
+	if (this.Rel_Romance_Points >= 1)
+	{
+		this.Rel_Romance_Points--;
+	}
+	if (this.Rel_Friendship_Points >= 2)
+	{
+		this.Rel_Friendship_Points -= 2;
+	}
+}
+
+resources DailyFansChange
+private void DailyFansChange()
+{
+	long fansChange = resources.FansChange;
+	resources.GetFansTotal(null);
+	resources.AddFans(resources.FansChange, null, null, null);
+	long fansTotal2 = resources.GetFansTotal(null);
+	if (staticVars.IsHard())
+	{
+		float num2 = (float)Math.Pow((double)fansTotal2, 0.83) * 0.012f + 2f;
+		if (num2 > (float)fansTotal2)
+		{
+			num2 = (float)fansTotal2;
+		}
+		if (num2 > 0f)
+		{
+			resources.FansChange = -(long)Mathf.CeilToInt(num2);
+		}
+		else
+		{
+			resources.FansChange = 0L;
+		}
+	}
+	this.onDailyFansChange();
+	this.onFansChange(fansTotal2);
+}
+
+resources OnNewDay
+REMOVE > resources.FansChange = 0L;
+this.DailyFansChange();
+
+tooltip_fans RenderFanChange
+if (staticVars.IsHard())
+{
+	double fans = (double)resources.GetFansTotal(null);
+	long churn = resources.FansChange;
+	if ((long)fans + churn <= 0L || churn > 0L)
+	{
+		churn = -(long)fans;
+	}
+	ExtensionMethods.SetText(this.fan_change, string.Concat(new string[]
+	{
+		Language.Data["TOTAL"],
+		": ",
+		ExtensionMethods.color(ExtensionMethods.formatNumber(resources.GetFansTotal(null), false, false), mainScript.blue),
+		"; ",
+		Language.Data["CHURN"],
+		": ",
+		ExtensionMethods.color(ExtensionMethods.formatNumber(churn, false, false), mainScript.red),
+		ExtensionMethods.color(" /w", mainScript.red)
+	}));
+	return;
+}
+
+Theaters._theater GetPriceCoeff
+float num = function.GetY((float)Price);
+LinearFunction._function linear = new LinearFunction._function();
+int daysSinceSingle = (staticVars.dateTime - singles.GetLatestReleasedSingle(false, this.GetGroup()).ReleaseData.ReleaseDate).Days;
+if (daysSinceSingle > 30)
+{
+	linear.Init(30f, 1f, 366f, 0.1f);
+	if (staticVars.IsHard())
+	{
+		linear.Init(30f, 1f, 183f, 0.1f);
+	}
+	num *= linear.GetY((float)daysSinceSingle);
+}
+if (num < 0.001f)
+{
+	num = 0.001f;
+}
+return num;
+
+Theaters._theater GetSubRevenue
+return (long)Math.Round((double)((float)this.GetSubscribers() * (float)this.Subscription_Price * 0.1f));
+
+Shows SetSales
+private void SetSales()
+{
+	this.sales.Clear();
+	float num = (float)(resources.GetFameLevel() + this.fame[this.fame.Count - 1]);
+	if (num < 1f)
+	{
+		num = 1f;
+	}
+	float num2 = num * 0.5f * 0.1f * (float)this.GetBaseAudience();
+	Shows._param._media_type? internetcheck = this.medium.media_type;
+	Shows._param._media_type internetcheck2 = Shows._param._media_type.internet;
+	if (staticVars.IsHard() && internetcheck.GetValueOrDefault() != internetcheck2)
+	{
+		num2 = (num2 + (float)this.GetAllNewFans() * (1f - this.GetFatigue(null) * this.GetFatigue(null) / 10000f)) / 12f;
+	}
+	else
+	{
+		num2 = (num2 + (float)this.GetAllNewFans()) / 12f;
+	}
+	int num3 = 0;
+	float num4 = this.GetAppeal();
+	if (this.castType != Shows._show._castType.entireGroup)
+	{
+		foreach (data_girls.girls girls in this.GetCast())
+		{
+			if (girls != null && girls.HasAward(Awards._type.variety_queen))
+			{
+				num4 = 2f;
+			}
+			else if (girls != null && girls.HasNomination(Awards._type.variety_queen))
+			{
+				num4 = 1.25f;
+			}
+		}
+	}
+	if (variables.Get("VIEWERS_BONUS") == "true" && staticVars.PlayerData.Chapter < tasks._chapter.chapter_5)
+	{
+		num4 *= 1.5f;
+	}
+	foreach (resources._fan fan in resources.Fans)
+	{
+		singles._single._sales sales = new singles._single._sales();
+		sales.fan = fan;
+		float num5 = 1f;
+		Shows._param._media_type? media_type = this.medium.media_type;
+		Shows._param._media_type media_type2 = Shows._param._media_type.internet;
+		float num6;
+		if (media_type.GetValueOrDefault() == media_type2 & media_type != null)
+		{
+			num6 = (float)(100 + UnityEngine.Random.Range(0, 15)) / 100f;
+		}
+		else
+		{
+			num6 = (float)(90 + UnityEngine.Random.Range(0, 20)) / 100f;
+		}
+		int num7 = Mathf.RoundToInt(num2 * num5 * num6 * num4);
+		if (num7 < 0)
+		{
+			num7 = 0;
+		}
+		media_type = this.medium.media_type;
+		media_type2 = Shows._param._media_type.internet;
+		if ((media_type.GetValueOrDefault() == media_type2 & media_type != null) && num7 < 1)
+		{
+			num7 = 1;
+		}
+		sales.sales = (long)num7;
+		this.sales.Add(sales);
+		media_type = this.medium.media_type;
+		media_type2 = Shows._param._media_type.internet;
+		float num8 = 1f;
+		if (this.mc != null)
+		{
+			num8 = 1f + (float)this.mc.fame * (float)this.mc.fame / 100f;
+			if (num8 < 1f)
+			{
+				num8 = 1f;
+			}
+		}
+		int num9;
+		if (media_type.GetValueOrDefault() == media_type2 & media_type != null)
+		{
+			num9 = Mathf.RoundToInt((float)num7 / 1000f * (1f - this.GetFatigue(null) / 100f) * 1.2f * num8);
+			if (num9 < 1)
+			{
+				num9 = 1;
+			}
+		}
+		else
+		{
+			num9 = Mathf.RoundToInt((float)num7 / 1000f * (1f - this.GetFatigue(null) / 100f) * num8);
+		}
+		if (this.episodeCount == 1 || this.episodeCount == 0)
+		{
+			num9 *= 2;
+		}
+		data_girls.AddFans_Equally((long)num9, fan, this.GetCast());
+		num3 += num9;
+	}
+	this.SetAudience(this.GetTotalSales());
+	this.SetNewFans(num3);
+}
+
+data_girls.girls GetExpectedSalary
+int result = 40000;
+
+data_girls.girls GetExpectedSalary_Total
+if (this.GetFameLevel() == 10 && (float)num2 / 10f > (float)num)
+{
+	return (long)Math.Round((double)num2 / 10.0);
+}
+
+data_girls GenerateGirl
+girls.salary = 20000L;
+
+data_girls GenerateGirl
+else if (mainScript.chance(6))
+{
+	sexuality = data_girls.girls._sexuality.lesbian;
+}
+else if (mainScript.chance(5))
+{
+	sexuality = data_girls.girls._sexuality.bi;
+}
+
+data_girls.girl AgeDeterioration
+if (!mainScript.chance(2 * num) && this.trait != traits._trait._type.Live_fast)
+{
+	return;
+}
+if (!mainScript.chance(4 * num) && this.trait == traits._trait._type.Live_fast)
+{
+	return;
+}
+
+data_girls.girl RecalcFanAppeal
+if (this.trait != traits._trait._type.Trendy)
+{
+	if (fan.age == resources.fanType.adult)
+	{
+		num2 /= 3.37f;
+	}
+	else
+	{
+		num2 /= 3.66f;
+	}
+}
+else if (fan.age == resources.fanType.adult)
+{
+	num2 /= 6.74f;
+}
+else
+{
+	num2 /= 1.83f;
+}
+
+data_girls.girls GetPartnerString
+if (!this.Is_AOC())
+{
+}
+
+data_girls GetAverageParam
+float num = 0f;
+float num2 = 0f;
+bool loner = false;
+foreach (data_girls.girls girls in Girls)
+{
+	if (girls != null)
+	{
+		num += girls.getParam(Type).val;
+		int ind = 0;
+		using (List<SEvent_Tour.tour>.Enumerator enumerator2 = SEvent_Tour.Tours.GetEnumerator())
+		{
+			while (enumerator2.MoveNext())
+			{
+				if (enumerator2.Current.Status == SEvent_Tour.tour._status.normal)
+				{
+					ind++;
+				}
+			}
+		}
+		using (List<SEvent_SSK._SSK>.Enumerator enumerator3 = SEvent_SSK.Elections.GetEnumerator())
+		{
+			while (enumerator3.MoveNext())
+			{
+				if (enumerator3.Current.Status == SEvent_Tour.tour._status.normal)
+				{
+					ind++;
+				}
+			}
+		}
+		using (List<SEvent_Concerts._concert>.Enumerator enumerator4 = SEvent_Concerts.Concerts.GetEnumerator())
+		{
+			while (enumerator4.MoveNext())
+			{
+				if (enumerator4.Current.Status == SEvent_Tour.tour._status.normal)
+				{
+					ind++;
+				}
+			}
+		}
+		if (girls != null && girls.trait == traits._trait._type.Anxiety && data_girls.IsStatParam(Type) && ind > 0)
+		{
+			num -= 10f;
+		}
+		if (girls != null && girls.trait == traits._trait._type.Clumsy && Type == data_girls._paramType.dance)
+		{
+			num -= 30f;
+		}
+		if (girls != null && girls.trait == traits._trait._type.Clumsy && Type == data_girls._paramType.funny)
+		{
+			num += 30f;
+		}
+		if (girls != null && girls.trait == traits._trait._type.Worrier && resources.GetScandalPointsTotal() > 0L && data_girls.IsStatParam(Type))
+		{
+			num -= 20f;
+		}
+		if (singles.GetLatestReleasedSingle(false, girls.GetGroup()) != null)
+		{
+		if (girls != null && girls.trait == traits._trait._type.Complacent && girls == singles.GetLatestReleasedSingle(false,girls.GetGroup()).GetCenter() && Type == data_girls._paramType.vocal)
+		{
+			num -= 20f;
+		}
+		if (girls != null && girls.trait == traits._trait._type.Complacent && girls == singles.GetLatestReleasedSingle(false,girls.GetGroup()).GetCenter() && Type == data_girls._paramType.dance)
+		{
+			num -= 20f;
+		}
+		if (girls != null && girls.trait == traits._trait._type.Defeatist && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.Chart_Position != 1 && data_girls.IsStatParam(Type))
+		{
+			num -= 20f;
+		}
+		if (girls != null && girls.trait == traits._trait._type.Underdog && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.Chart_Position != 1 && data_girls.IsStatParam(Type))
+		{
+			num += 20f;
+		}
+		}
+		if (girls != null && girls.trait == traits._trait._type.Lone_Wolf)
+		{
+			loner = true;
+		}
+		num2 += 1f;
+	}
+}
+if (num < 1f)
+{
+	num = 1f;
+}
+if (num2 == 0f)
+{
+	return 0f;
+}
+if (num2 == 1f && loner)
+{
+	num += 40f;
+}
+return num / num2;
+
+data_girls.girls UpdateDatingStatus
+if (mainScript.chance(2) && !this.DatingData.Is_Partner_Status_Known)
+{
+	bool leaker = false;
+	foreach (data_girls.girls girls in data_girls.GetActiveGirls(null))
+	{
+		if (girls != this && girls.trait == traits._trait._type.Indiscreet)
+		{
+			leaker = true;
+		}
+	}
+	if (leaker)
+	{
+		if (policies.GetSelectedPolicyValue(policies._type.dating).Value == policies._value.dating_forbidden)
+		{
+			NotificationManager.AddNotification(Language.Insert("IDOL__OUTSIDE_LEAK_SCANDAL", new string[]
+			{
+				this.GetName(true)
+			}), mainScript.red32, NotificationManager._notification._type.idol_relationship_change);
+			this.getParam(data_girls._paramType.scandalPoints).add(1f, false);
+		}
+		else
+		{
+			NotificationManager.AddNotification(Language.Insert("IDOL__OUTSIDE_LEAK", new string[]
+			{
+				this.GetName(true)
+			}), mainScript.red32, NotificationManager._notification._type.idol_relationship_change);
+		}
+		this.getParam(data_girls._paramType.mentalStamina).add(-30f, false);
+		this.DatingData.Is_Partner_Status_Known = true;
+		this.DatingData.Partner_Status_Known_To_Player = this.DatingData.Partner_Status;
+	}
+}
+
+Relationships._relationship CheckDating
+if (mainScript.chance(2) && !this.IsRelationshipKnown())
+{
+	bool leaker = false;
+	foreach (data_girls.girls girls in data_girls.GetActiveGirls(null))
+	{
+		if (girls != this.Girls[0] && girls != this.Girls[1] && girls.trait == traits._trait._type.Indiscreet)
+		{
+			leaker = true;
+		}
+	}
+	if (leaker)
+	{
+		if (policies.GetSelectedPolicyValue(policies._type.dating).Value == policies._value.dating_forbidden)
+		{
+			this.Girls[0].getParam(data_girls._paramType.scandalPoints).add(1f, false);
+			this.Girls[1].getParam(data_girls._paramType.scandalPoints).add(1f, false);
+			NotificationManager.AddNotification(Language.Insert("IDOL__INSIDE_LEAK_SCANDAL", new string[]
+			{
+				this.Girls[0].GetName(true),
+				this.Girls[1].GetName(true)
+			}), mainScript.red32, NotificationManager._notification._type.idol_relationship_change);
+		}
+		else
+		{
+			NotificationManager.AddNotification(Language.Insert("IDOL__INSIDE_LEAK", new string[]
+			{
+				this.Girls[0].GetName(true),
+				this.Girls[1].GetName(true)
+			}), mainScript.red32, NotificationManager._notification._type.idol_relationship_change);
+		}
+		this.Girls[0].getParam(data_girls._paramType.mentalStamina).add(-30f, false);
+		this.Girls[1].getParam(data_girls._paramType.mentalStamina).add(-30f, false);
+		this.Girls[0].DatingData.Is_Partner_Status_Known = true;
+		this.Girls[1].DatingData.Is_Partner_Status_Known = true;
+		this.Girls[0].DatingData.Partner_Status_Known_To_Player = data_girls.girls._dating_data._partner_status.taken_idol;
+		this.Girls[1].DatingData.Partner_Status_Known_To_Player = data_girls.girls._dating_data._partner_status.taken_idol;
+	}
+	}
+}
+
+Relationships._relationship BreakUp
+this.Girls[0].DatingData.Is_Partner_Status_Known = false;
+this.Girls[1].DatingData.Is_Partner_Status_Known = false;
+
+Birthday_Popup DoParam
+if (this.Girl.trait == traits._trait._type.Live_fast)
+{
+	num3 = num * (0.95f - 0.005f * (float)num2);
+}
+else
+{
+	num3 = num * (0.975f - 0.0025f * (float)num2);
+}
+
+business._proposal GetGirlCoeff
+if(this.type == business._type.photoshoot && _girl.trait == traits._trait._type.Photogenic)
+{
+	num += 1f;
+}
+
+business._proposal GetGirlCoeff
+int ind = 0;
+using (List<SEvent_Tour.tour>.Enumerator enumerator = SEvent_Tour.Tours.GetEnumerator())
+{
+	while (enumerator.MoveNext())
+	{
+		if (enumerator.Current.Status == SEvent_Tour.tour._status.normal)
+		{
+			ind++;
+		}
+	}
+}
+using (List<SEvent_SSK._SSK>.Enumerator enumerator2 = SEvent_SSK.Elections.GetEnumerator())
+{
+	while (enumerator2.MoveNext())
+	{
+		if (enumerator2.Current.Status == SEvent_Tour.tour._status.normal)
+		{
+			ind++;
+		}
+	}
+}
+using (List<SEvent_Concerts._concert>.Enumerator enumerator3 = SEvent_Concerts.Concerts.GetEnumerator())
+{
+	while (enumerator3.MoveNext())
+	{
+		if (enumerator3.Current.Status == SEvent_Tour.tour._status.normal)
+		{
+			ind++;
+		}
+	}
+}
+if (_girl != null && _girl.trait == traits._trait._type.Anxiety && data_girls.IsStatParam(this.skill) && ind > 0)
+{
+	val -= 10f;
+}
+if (_girl != null && _girl.trait == traits._trait._type.Clumsy && this.skill == data_girls._paramType.funny)
+{
+	val += 30f;
+}
+if (_girl != null && _girl.trait == traits._trait._type.Worrier && resources.GetScandalPointsTotal() > 0L && data_girls.IsStatParam(this.skill))
+{
+	val -= 20f;
+}
+if (singles.GetLatestReleasedSingle(false, _girl.GetGroup()) != null)
+{
+if (_girl != null && _girl.trait == traits._trait._type.Defeatist && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, _girl.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, _girl.GetGroup()).ReleaseData.Chart_Position != 1 && data_girls.IsStatParam(this.skill))
+{
+	val -= 20f;
+}
+if (_girl != null && _girl.trait == traits._trait._type.Underdog && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, _girl.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, _girl.GetGroup()).ReleaseData.Chart_Position != 1 && data_girls.IsStatParam(this.skill))
+{
+	val += 20f;
+}
+}
+if (val < 1f)
+{
+	val = 1f;
+}
+
+
+
+Relationships._relationship Initialize
+int age = this.Girls[0].GetAge();
+int age2 = this.Girls[1].GetAge();
+if (this.Girls[0].trait == traits._trait._type.Maternal && age > age2)
+{
+	this.Dynamic = Relationships._relationship._dynamic.positive;
+}
+else if (this.Girls[1].trait == traits._trait._type.Maternal && age2 > age)
+{
+	this.Dynamic = Relationships._relationship._dynamic.positive;
+}
+else if (this.Girls[0].trait == traits._trait._type.Precocious && age < age2)
+{
+	this.Dynamic = Relationships._relationship._dynamic.positive;
+}
+else if (this.Girls[1].trait == traits._trait._type.Precocious && age2 < age)
+{
+	this.Dynamic = Relationships._relationship._dynamic.positive;
+}
+else
+{
+	this.Dynamic = (Relationships._relationship._dynamic)UnityEngine.Random.Range(1, 4);
+}
+
+Relationships Do_Dynamic
+if (relationship.Dynamic == Relationships._relationship._dynamic.positive)
+{
+	relationship.Add(0.1f);
+	if (relationship.Girls[0].trait == traits._trait._type.Maternal && relationship.Girls[0].GetAge() > relationship.Girls[1].GetAge())
+	{
+		relationship.Add(0.3f);
+	}
+	else if (relationship.Girls[1].trait == traits._trait._type.Maternal && relationship.Girls[1].GetAge() > relationship.Girls[0].GetAge())
+	{
+		relationship.Add(0.3f);
+	}
+	if (relationship.Girls[0].trait == traits._trait._type.Precocious && relationship.Girls[0].GetAge() < relationship.Girls[1].GetAge())
+	{
+		relationship.Add(0.3f);
+	}
+	else if (relationship.Girls[1].trait == traits._trait._type.Precocious && relationship.Girls[1].GetAge() < relationship.Girls[0].GetAge())
+	{
+		relationship.Add(0.3f);
+	}
+}
+else if (relationship.Dynamic == Relationships._relationship._dynamic.negative)
+{
+	relationship.Add(-0.1f);
+}
+if(singles.GetLatestReleasedSingle(false, relationship.Girls[0].GetGroup()) != null){
+if (singles.GetLatestReleasedSingle(false, relationship.Girls[0].GetGroup()).GetCenter() == relationship.Girls[0] && relationship.Girls[0].trait == traits._trait._type.Arrogant)
+{
+	relationship.Add(-0.5f);
+}
+else if (singles.GetLatestReleasedSingle(false, relationship.Girls[1].GetGroup()).GetCenter() == relationship.Girls[1] && relationship.Girls[1].trait == traits._trait._type.Arrogant)
+{
+	relationship.Add(-0.5f);
+}
+}
+
+Relationships._relationship Recalc
+float num4 = (float)num / (float)(num + num2);
+if ((this.Girls[0].trait == traits._trait._type.Forgiving || this.Girls[1].trait == traits._trait._type.Forgiving) && num4 < 0.5f)
+{
+	num4 = 0.5f;
+}
+this.Ratio = num4;
+
+Shows._show AddCastParam
+foreach (data_girls.girls girls in girlList)
+{
+	if (girls != null && girls.trait == traits._trait._type.Meme_queen)
+	{
+		Shows._param._media_type? media_type = this.medium.media_type;
+		Shows._param._media_type media_type2 = Shows._param._media_type.internet;
+		if (media_type.GetValueOrDefault() == media_type2 & media_type != null)
+		{
+			param.val += 10f;
+		}
+	}
+}
+
+Show_Popup AddCastParam
+foreach (data_girls.girls girls in girlList)
+{
+	if (girls != null && girls.trait == traits._trait._type.Meme_queen)
+	{
+		Shows._param._media_type? media_type = this.medium.media_type;
+		Shows._param._media_type media_type2 = Shows._param._media_type.internet;
+		if (media_type.GetValueOrDefault() == media_type2 & media_type != null)
+		{
+			param.val += 10f;
+		}
+	}
+}
+
+Show_Popup SetParam
+this.UpdateCastParams();
+
+Shows._show SetStamina
+int annoy = 0;
+foreach (data_girls.girls girls in cast)
+{
+	if (girls != null && girls.trait == traits._trait._type.Annoying && girls.IsActive())
+	{
+		annoy++;
+	}
+}
+foreach (data_girls.girls girls2 in cast)
+{
+	if (girls2.IsActive())
+	{
+		if (annoy == 1)
+		{
+			if (girls2.trait != traits._trait._type.Annoying)
+			{
+				girls2.addParam(data_girls._paramType.physicalStamina, -staminaCost * 1.2f, false);
+			}
+			else
+			{
+				girls2.addParam(data_girls._paramType.physicalStamina, -staminaCost, false);
+			}
+		}
+		else if (annoy > 1)
+		{
+			girls2.addParam(data_girls._paramType.physicalStamina, -staminaCost * 1.2f, false);
+		}
+		else
+		{
+			girls2.addParam(data_girls._paramType.physicalStamina, -staminaCost, false);
+		}
+
+singles._param GetSuccessChance
+if (Single != null)
+{
+	bool flag = false;
+	foreach (data_girls.girls girls in Single.girls)
+	{
+		if (girls != null && girls.trait == traits._trait._type.Meme_queen)
+		{
+			flag = true;
+		}
+	}
+	if (flag)
+	{
+		if (Result == Single_Marketing_Roll._result.success)
+		{
+			f = 19f + (float)(Level * 2);
+		}
+		else if (Result == Single_Marketing_Roll._result.success_crit)
+		{
+			f = 15f;
+		}
+		else if (Result == Single_Marketing_Roll._result.fail_crit)
+		{
+			f = 10f;
+		}
+	}
+}
+
+singles._param GetSuccessChance
+case singles._param._special_type.lewd_pv:
+{
+	if (Single == null)
+	{
+		return 0f;
+	}
+	float num = (Single.GetSenbatsuParamValue(data_girls._paramType.sexy) + Single.GetSenbatsuParamValue(data_girls._paramType.cute)) / 2f;
+	if (Result == Single_Marketing_Roll._result.success)
+	{
+		f = num * 9f / 10f;
+	}
+	else if (Result == Single_Marketing_Roll._result.success_crit)
+	{
+		f = num / 10f;
+	}
+	else if (Result == Single_Marketing_Roll._result.fail_crit)
+	{
+		f = (100f - num) / 10f;
+	}
+	break;
+}
+case singles._param._special_type.edgy_pv:
+{
+	if (Single == null)
+	{
+		return 0f;
+	}
+	float num2 = (Single.GetSenbatsuParamValue(data_girls._paramType.cool) + Single.GetSenbatsuParamValue(data_girls._paramType.funny)) / 2f;
+	if (Result == Single_Marketing_Roll._result.success)
+	{
+		f = num2 * 9f / 10f;
+	}
+	else if (Result == Single_Marketing_Roll._result.success_crit)
+	{
+		f = num2 / 10f;
+	}
+	else if (Result == Single_Marketing_Roll._result.fail_crit)
+	{
+		f = (100f - num2) / 10f;
+	}
+	break;
+}
+case singles._param._special_type.artsy_pv:
+{
+	if (Single == null)
+	{
+		return 0f;
+	}
+	float num3 = (Single.GetSenbatsuParamValue(data_girls._paramType.pretty) + Single.GetSenbatsuParamValue(data_girls._paramType.smart)) / 2f;
+	if (Result == Single_Marketing_Roll._result.success)
+	{
+		f = num3 * 9f / 10f;
+	}
+	else if (Result == Single_Marketing_Roll._result.success_crit)
+	{
+		f = num3 / 10f;
+	}
+	else if (Result == Single_Marketing_Roll._result.fail_crit)
+	{
+		f = (100f - num3) / 10f;
+	}
+	break;
+}
+
+singles._param GetSuccessModifier
+case singles._param._special_type.fake_scandal:
+if (Secondary)
+{
+	return 0f;
+}
+if (Result == Single_Marketing_Roll._result.success)
+{
+	return 50f + (float)Level * 5f;
+}
+if (Result == Single_Marketing_Roll._result.success_crit)
+{
+	return 100f + (float)Level * 290f;
+}
+if (Result == Single_Marketing_Roll._result.fail)
+{
+	return 4f;
+}
+if (Result == Single_Marketing_Roll._result.fail_crit)
+{
+	return 10f;
+}
+return result;
+case singles._param._special_type.lewd_pv:
+case singles._param._special_type.edgy_pv:
+case singles._param._special_type.artsy_pv:
+if (!Secondary)
+{
+	if (Result == Single_Marketing_Roll._result.success)
+	{
+		return 50f + (float)Level * 5f;
+	}
+	if (Result == Single_Marketing_Roll._result.success_crit)
+	{
+		return 100f + (float)Level * 80f;
+	}
+	if (Result == Single_Marketing_Roll._result.fail)
+	{
+		return -30f;
+	}
+	if (Result == Single_Marketing_Roll._result.fail_crit)
+	{
+		return -75f;
+	}
+}
+else
+{
+	if (Result == Single_Marketing_Roll._result.success)
+	{
+		return 10f + (float)Level * 5f;
+	}
+	if (Result == Single_Marketing_Roll._result.success_crit)
+	{
+		return 50f + (float)Level * 30f;
+	}
+	if (Result == Single_Marketing_Roll._result.fail)
+	{
+		return -15f;
+	}
+	if (Result == Single_Marketing_Roll._result.fail_crit)
+	{
+		return -50f;
+	}
+}
+return result;
+
+singles ReleaseSingle
+foreach (data_girls.girls girls in single.girls)
+{
+	if (girls != null)
+	{
+		if (girls.trait == traits._trait._type.Misandry && single.IsGroupHS() && mainScript.chance(20))
+		{
+			girls.AddAppeal(resources.fanType.male, -1f);
+		}
+		else if (girls.trait == traits._trait._type.Misandry && single.IsIndividualHS() && mainScript.chance(20))
+		{
+			girls.AddAppeal(resources.fanType.male, -1f);
+		}
+	}
+}
+
+singles AddOpinion
+int compareappeal(singles._fanAppeal x, singles._fanAppeal y) => y.ratio.CompareTo(x.ratio);;
+single.ReleaseData.FanAppeal.Sort(new Comparison<singles._fanAppeal>(compareappeal));
+List<singles._single> latestReleasedSingles = new List<singles._single>();
+for (int i = singles.Singles.Count - 1; i >= 0; i--)
+{
+	if (singles.Singles[i].status == singles._single._status.released && singles.Singles[i].GetGroup() == single.GetGroup())
+	{
+		latestReleasedSingles.Add(singles.Singles[i]);
+		if (latestReleasedSingles.Count >= 3)
+		{
+			break;
+		}
+	}
+}
+
+singles GenerateSales
+List<singles._single> latestReleasedSingles = new List<singles._single>();
+for (int i = singles.Singles.Count - 1; i >= 0; i--)
+{
+	if (singles.Singles[i].status == singles._single._status.released && singles.Singles[i].GetGroup() == single.GetGroup())
+	{
+		latestReleasedSingles.Add(singles.Singles[i]);
+		if (latestReleasedSingles.Count >= 3)
+		{
+			break;
+		}
+	}
+}
+
+singles._single SenbatsuCalcParam
+int num2 = 5;
+if (num == 0)
+{
+	num2 = 0;
+}
+else if (num == 1)
+{
+	num2 = 1;
+}
+else if (num <= 3)
+{
+	num2 = 1 + (num - 1) / 2;
+}
+else if (num <= 6)
+{
+	num2 = 2 + (num - 3) / 3;
+}
+else if (num <= 10)
+{
+	num2 = 3 + (num - 6) / 4;
+}
+else if (num <= 15)
+{
+	num2 = 3 + (num - 10) / 5;
+}
+float num7 = 100f / (float)num2;
+float num3 = 0f;
+float rowswithgirls = 0f;
+rowswithgirls += (float)singles.GetGirlsInARow(_girls, 0).Count;
+rowswithgirls += (float)singles.GetGirlsInARow(_girls, 1).Count / 2f;
+rowswithgirls += (float)singles.GetGirlsInARow(_girls, 2).Count / 3f;
+rowswithgirls += (float)singles.GetGirlsInARow(_girls, 3).Count / 4f;
+rowswithgirls += (float)singles.GetGirlsInARow(_girls, 4).Count / 5f;
+if (rowswithgirls <= 0f)
+{
+	rowswithgirls = 1f;
+}
+for (int i = 0; i <= 4; i++)
+{
+	float num4 = 0f;
+	List<data_girls.girls> girlsInARow = singles.GetGirlsInARow(_girls, i);
+	if (girlsInARow.Count != 0)
+	{
+		foreach (data_girls.girls girls in girlsInARow)
+		{
+			if (girls != null)
+			{
+				num4 += girls.getParam(type).val;
+				int num5 = 0;
+				using (List<SEvent_Tour.tour>.Enumerator enumerator3 = SEvent_Tour.Tours.GetEnumerator())
+				{
+					while (enumerator3.MoveNext())
+					{
+						if (enumerator3.Current.Status == SEvent_Tour.tour._status.normal)
+						{
+							num5++;
+						}
+					}
+				}
+				using (List<SEvent_SSK._SSK>.Enumerator enumerator4 = SEvent_SSK.Elections.GetEnumerator())
+				{
+					while (enumerator4.MoveNext())
+					{
+						if (enumerator4.Current.Status == SEvent_Tour.tour._status.normal)
+						{
+							num5++;
+						}
+					}
+				}
+				using (List<SEvent_Concerts._concert>.Enumerator enumerator5 = SEvent_Concerts.Concerts.GetEnumerator())
+				{
+					while (enumerator5.MoveNext())
+					{
+						if (enumerator5.Current.Status == SEvent_Tour.tour._status.normal)
+						{
+							num5++;
+						}
+					}
+				}
+				if (girls != null && girls.trait == traits._trait._type.Anxiety && data_girls.IsStatParam(type) && num5 > 0)
+				{
+					num4 -= 10f;
+				}
+				if (girls != null && girls.trait == traits._trait._type.Clumsy && type == data_girls._paramType.dance)
+				{
+					num4 -= 30f;
+				}
+				if (girls != null && girls.trait == traits._trait._type.Clumsy && type == data_girls._paramType.funny)
+				{
+					num4 += 30f;
+				}
+				if (girls != null && girls.trait == traits._trait._type.Worrier && resources.GetScandalPointsTotal() > 0L && data_girls.IsStatParam(type))
+				{
+					num4 -= 20f;
+				}
+				if (singles.GetLatestReleasedSingle(false, girls.GetGroup()) != null)
+				{
+					if (girls != null && girls.trait == traits._trait._type.Complacent && girls == singles.GetLatestReleasedSingle(false, girls.GetGroup()).GetCenter() && type == data_girls._paramType.vocal)
+					{
+						num4 -= 20f;
+					}
+					if (girls != null && girls.trait == traits._trait._type.Complacent && girls == singles.GetLatestReleasedSingle(false, girls.GetGroup()).GetCenter() && type == data_girls._paramType.dance)
+					{
+						num4 -= 20f;
+					}
+					if (girls != null && girls.trait == traits._trait._type.Defeatist && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.Chart_Position != 1 && data_girls.IsStatParam(type))
+					{
+						num4 -= 20f;
+					}
+					if (girls != null && girls.trait == traits._trait._type.Underdog && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.Chart_Position != 1 && data_girls.IsStatParam(type))
+					{
+						num4 += 20f;
+					}
+				}
+			}
+		}
+		if (num4 < 0f)
+		{
+			num4 = 0f;
+		}
+		float num6 = num4 / (float)(i + 1);
+		num3 += num6 * (0f / rowswithgirls + 1f / (float)num2);
+	}
+}
+
+SEvent_Tour FinishTour
+foreach (data_girls.girls girls in activeGirls)
+{
+	if (girls.trait == traits._trait._type.Perfectionist && num < 0L)
+	{
+		girls.getParam(data_girls._paramType.mentalStamina).add(-20f, false);
+	}
+	girls.Earn(val);
+}
+
+SEvent_Tour.tour GetNewFansByAttendance
+float num = UnityEngine.Random.Range(1f, 20f) / 100f * 3.5f;
+
+SEvent_Tour.tour SelectCountry
+int staminaCost = this.Stamina + Country.GetStaminaCost();
+SEvent_Tour.tour.selectedCountry country = this.GetCountry(Country);
+if (country == null)
+{
+	if (staminaCost <= 100)
+	{
+		this.SelectedCountries.Add(new SEvent_Tour.tour.selectedCountry
+		{
+			Country = Country,
+			Level = Level
+		});
+	}
+}
+
+Tour_Star SetTooltip
+if (country.GetStaminaCost() + tour.Stamina > 100 && tour.GetCountry(country) == null)
+{
+	text3 = string.Concat(new object[]
+	{
+		"<color=",
+		mainScript.red,
+		">",
+		Language.Data["TOUR__STAMINACAP"],
+		"</color>"
+	});
+}
+
+Tour_Country OnClick
+Tour_Country[] componentsInChildren = this.TourPopup.CountriesContainer.transform.GetComponentsInChildren<Tour_Country>();
+for (int i = 0; i < componentsInChildren.Length; i++)
+{
+	componentsInChildren[i].UpdateData();
+}
+
+SEvent_Concerts._concert Finish
+foreach (data_girls.girls girls in this.GetGirls(true))
+{
+	if (girls.trait == traits._trait._type.Perfectionist && this.Hype < 100f)
+	{
+		girls.getParam(data_girls._paramType.mentalStamina).add(-20f, false);
+	}
+}
+
+SEvent_Concerts._concert._projectedValues GetAttendanceOfDemo
+public float GetAttendanceOfDemo()
+{
+	int num = this.TicketPrice;
+	int num2 = 10000;
+	float num3 = 4.99f;
+	if (staticVars.IsHard())
+	{
+		num *= 3;
+		num2 = 6000;
+		num3 = 7.85f;
+	}
+	float num4;
+	if (num < 3000)
+	{
+		num4 = -0.013333334f * (float)num + 50f;
+	}
+	else if (num > num2)
+	{
+		num4 = num3 * Mathf.Pow(1.0001f, -(float)num + (float)num2);
+	}
+	else
+	{
+		num4 = -0.0007142857f * (float)num + 12.142858f;
+	}
+	return num4 / 100f;
+}
+
+SEvents_Concerts._concert._projectedValues GetRevenue
+float hype = this.GetHype() * 100f;
+float num;
+if (hype <= 100f || this.Parent.Venue == SEvent_Concerts._venue.club)
+{
+	num = hype / 100f;
+}
+else
+{
+	float num2 = hype - 100f;
+	LinearFunction._function function = new LinearFunction._function();
+	function.Init(0f, 50f, 100f, 25f);
+	float num3 = function.GetY(num2) / 100f;
+	num = num2 * num3 / 100f + 1f;
+}
+return (long)Mathf.Round((float)this.GetNumberOfSoldTickets() * (float)this.TicketPrice * num);
+
+SEvents_Concerts._concert._projectedValues GetString
+int num = Mathf.FloorToInt(_val * 100f);
+
+SEvent_Concerts StartConcert
+REMOVED: SEvent_Concerts.UpdateVenueUnlocked(this.Concert);
+
+SEvent_Concerts._concert Finish
+if (this.ProjectedValues.Actual_Attendance >= 1f && this.ProjectedValues.GetActualProfit() >= 0L)
+{
+	SEvent_Concerts.UpdateVenueUnlocked(this);
+}
+
+SEvent_Concerts GetVenueCapacity
+if (staticVars.IsHard())
+{
+	switch (val)
+	{
+	case SEvent_Concerts._venue.club:
+		return 500;
+	case SEvent_Concerts._venue.concertHall:
+		return 1500;
+	case SEvent_Concerts._venue.openAirStage:
+		return 5000;
+	case SEvent_Concerts._venue.stadium:
+		return 15000;
+	case SEvent_Concerts._venue.tokyoColiseum:
+		return 50000;
+	default:
+		return 1;
+	}
+}
+
+SEvent_Concerts GetVenueBaseCost
+if (staticVars.IsHard())
+{
+	switch (val)
+	{
+	case SEvent_Concerts._venue.club:
+		return 500000;
+	case SEvent_Concerts._venue.concertHall:
+		return 3000000;
+	case SEvent_Concerts._venue.openAirStage:
+		return 25000000;
+	case SEvent_Concerts._venue.stadium:
+		return 50000000;
+	case SEvent_Concerts._venue.tokyoColiseum:
+		return 200000000;
+	default:
+		return 1;
+	}
+}
+
+SEvent_Concerts._concert._song GetSkillValue
+int ind = 0;
+using (List<SEvent_Tour.tour>.Enumerator enumerator = SEvent_Tour.Tours.GetEnumerator())
+{
+	while (enumerator.MoveNext())
+	{
+		if (enumerator.Current.Status == SEvent_Tour.tour._status.normal)
+		{
+			ind++;
+		}
+	}
+}
+using (List<SEvent_SSK._SSK>.Enumerator enumerator2 = SEvent_SSK.Elections.GetEnumerator())
+{
+	while (enumerator2.MoveNext())
+	{
+		if (enumerator2.Current.Status == SEvent_Tour.tour._status.normal)
+		{
+			ind++;
+		}
+	}
+}
+using (List<SEvent_Concerts._concert>.Enumerator enumerator3 = SEvent_Concerts.Concerts.GetEnumerator())
+{
+	while (enumerator3.MoveNext())
+	{
+		if (enumerator3.Current.Status == SEvent_Tour.tour._status.normal)
+		{
+			ind++;
+		}
+	}
+}
+float val = this.Center.getParam(data_girls._paramType.dance).val;
+float val2 = this.Center.getParam(data_girls._paramType.vocal).val;
+if (this.Center != null && this.Center.trait == traits._trait._type.Anxiety && ind > 0)
+{
+	val -= 10f;
+	val2 -= 10f;
+}
+if (this.Center != null && this.Center.trait == traits._trait._type.Clumsy)
+{
+	val -= 30f;
+}
+if (this.Center != null && this.Center.trait == traits._trait._type.Worrier && resources.GetScandalPointsTotal() > 0L)
+{
+	val -= 20f;
+	val2 -= 20f;
+}
+if (singles.GetLatestReleasedSingle(false, this.Center.GetGroup()) != null)
+{
+if (this.Center != null && this.Center.trait == traits._trait._type.Complacent && this.Center == singles.GetLatestReleasedSingle(false, this.Center.GetGroup()).GetCenter())
+{
+	val -= 20f;
+	val2 -= 20f;
+}
+if (this.Center != null && this.Center.trait == traits._trait._type.Defeatist && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, this.Center.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, this.Center.GetGroup()).ReleaseData.Chart_Position != 1)
+{
+	val -= 20f;
+	val2 -= 20f;
+}
+if (this.Center != null && this.Center.trait == traits._trait._type.Underdog && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, this.Center.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, this.Center.GetGroup()).ReleaseData.Chart_Position != 1)
+{
+	val += 20f;
+	val2 += 20f;
+}
+}
+if (val < 1f)
+{
+	val = 1f;
+}
+if (val2 < 1f)
+{
+	val2 = 1f;
+}
+int num = Mathf.FloorToInt((0f + val + val2) / 2f);
+
+SEvent_Concerts._concert._mc GetSkillValue
+float val = girls.getParam(data_girls._paramType.smart).val;
+float val2 = girls.getParam(data_girls._paramType.funny).val;
+using (List<SEvent_Tour.tour>.Enumerator enumerator2 = SEvent_Tour.Tours.GetEnumerator())
+{
+	while (enumerator2.MoveNext())
+	{
+		if (enumerator2.Current.Status == SEvent_Tour.tour._status.normal)
+		{
+			ind++;
+		}
+	}
+}
+using (List<SEvent_SSK._SSK>.Enumerator enumerator3 = SEvent_SSK.Elections.GetEnumerator())
+{
+	while (enumerator3.MoveNext())
+	{
+		if (enumerator3.Current.Status == SEvent_Tour.tour._status.normal)
+		{
+			ind++;
+		}
+	}
+}
+using (List<SEvent_Concerts._concert>.Enumerator enumerator4 = SEvent_Concerts.Concerts.GetEnumerator())
+{
+	while (enumerator4.MoveNext())
+	{
+		if (enumerator4.Current.Status == SEvent_Tour.tour._status.normal)
+		{
+			ind++;
+		}
+	}
+}
+if (girls != null && girls.trait == traits._trait._type.Anxiety && ind > 0)
+{
+	val -= 10f;
+	val2 -= 10f;
+}
+if (girls != null && girls.trait == traits._trait._type.Clumsy)
+{
+	val2 += 30f;
+}
+if (girls != null && girls.trait == traits._trait._type.Worrier && resources.GetScandalPointsTotal() > 0L)
+{
+	val -= 20f;
+	val2 -= 20f;
+}
+if (singles.GetLatestReleasedSingle(false, girls.GetGroup()) != null)
+{
+if (girls != null && girls.trait == traits._trait._type.Defeatist && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.Chart_Position != 1)
+{
+	val -= 20f;
+	val2 -= 20f;
+}
+if (girls != null && girls.trait == traits._trait._type.Underdog && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.Chart_Position != 1)
+{
+	val += 20f;
+	val2 += 20f;
+}
+}
+if (val < 1f)
+{
+	val = 1f;
+}
+if (val2 < 1f)
+{
+	val2 = 1f;
+}

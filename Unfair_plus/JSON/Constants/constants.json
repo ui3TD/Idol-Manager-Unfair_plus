@@ -1,0 +1,55 @@
+[
+	{
+		id: "IDOL__OUTSIDE_LEAK",
+		text: "An indiscreet person has leaked that @ is dating. She lost 30 mental stamina points."
+	},
+	{
+		id: "IDOL__INSIDE_LEAK",
+		text: "An indiscreet person has leaked that @1 and @2 are dating each other. They both lost 30 mental stamina points."
+	},
+	{
+		id: "IDOL__OUTSIDE_LEAK_SCANDAL",
+		text: "An indiscreet person has leaked that @ is dating. She lost 30 mental stamina points and gained 1 scandal point."
+	},
+	{
+		id: "IDOL__INSIDE_LEAK_SCANDAL",
+		text: "An indiscreet person has leaked that @1 and @2 are dating each other. They both lost 30 mental stamina points and gained 1 scandal point."
+	},{
+		id: "THEATER__ATTENDANCE_TIP",
+		text: "Average for the last 7 performances. Attendance decreases if there hasn't been a single in the past 30 days."
+	},{
+		id: "THEATER__STREAMING_TIP",
+		text: "Your fans can subscribe to your streaming service and watch performances for a monthly fee\n\nYou will gain or lose subscribers every day. Fans decide whether they want to subscribe or not based on the last 30 days. Main factors that affect this are:\n- Subscription price\n- Hardcore fans are easier to get than casual fans\n- Adult fans are easier to get than teens\n- Casual fans are not interested in manzai\n- Number of day offs in a month\n- Whether the group has released a new single in the past 30 days\n\nYou won't have more subscribers than fans. 90% of the subscription revenue is paid to the service provider so you only receive 10%."
+	},{
+		id: "MARKETING__LEWD_PV_DESCRIPTION",
+		text: "Cost per CD: {cost_CD}{linebreak}Effect: Increase in sales and new fans\n\nCritical Success\nMale: {crit_succ_effect}\nHardcore: {crit_succ_effect_secondary}\n\nSuccess\nMale: {succ_effect}\nHardcore: {succ_effect_secondary}\n\nFailure\nFemale: {fail_effect}\nCasual: {fail_effect_secondary}\n\nCritical Failure\nFemale: {crit_fail_effect}\nCasual: {crit_fail_effect_secondary}{linebreak}Success rate is equal to formation's average {green}sexy</color> and {green}cute</color> stats"
+	},{
+		id: "MARKETING__EDGY_PV_DESCRIPTION",
+		text: "Cost per CD: {cost_CD}{linebreak}Effect: Increase in sales and new fans\n\nCritical Success\nTeen: {crit_succ_effect}\nFemale: {crit_succ_effect_secondary}\n\nSuccess\nTeen: {succ_effect}\nFemale: {succ_effect_secondary}\n\nFailure\nAdult: {fail_effect}\nYoung-Adult: {fail_effect_secondary}\n\nCritical Failure\nAdult: {crit_fail_effect}\nYoung-Adult: {crit_fail_effect_secondary}{linebreak}Success rate is equal to formation's average {green}cool</color> and {green}funny</color> stats"
+	},{
+		id: "MARKETING__ARTSY_PV_DESCRIPTION",
+		text: "Cost per CD: {cost_CD}{linebreak}Effect: Increase in sales and new fans\n\nCritical Success\nAdult: {crit_succ_effect}\nFemale: {crit_succ_effect_secondary}\n\nSuccess\nAdult: {succ_effect}\nFemale: {succ_effect_secondary}\n\nFailure\nTeen: {fail_effect}\nMale: {fail_effect_secondary}\n\nCritical Failure\nTeen: {crit_fail_effect}\nMale: {crit_fail_effect_secondary}{linebreak}Success rate is equal to formation's average {green}pretty</color> and {green}smart</color> stats"
+	},{
+		id: "STAFF__FIRE_HINT",
+		text: "To fire a staffer, you either have to provide them a severance package or to blame a few scandals on them if they've been employed for at least 30 days"
+	},{
+		id: "DIFF__HARD",
+		text: "Unfair+ (MOD)"
+	},{
+		id: "DIFF__HARD_DESC",
+		text: "Unfair+ is a modded difficulty mode. Fans easily lose interest over time and will abandon your group. Girls will not tolerate low pay, and will demand a cut of their revenue. You'll have to put in effort to maintain friendships with your girls. Theater attendance is difficult to maintain and sister group growth is minimal.\nCan you lead your girls to conquer Tokyo Coliseum?"
+	},{
+		id: "CONCERT__VENUE_UNLOCK",
+		text: "Sell out a "
+	},{
+		id: "CONCERT__VENUE_UNLOCK_2",
+		text: " concert with a profit to unlock this venue"
+	},{
+		id: "CHURN",
+		text: "Churn Rate"
+	},{
+		id: "TOUR__STAMINACAP",
+		text: "Stamina cannot exceed 100pt"
+	}
+
+]
