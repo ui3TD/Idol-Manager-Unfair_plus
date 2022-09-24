@@ -77,7 +77,7 @@ There have been several changes to fan appeal values of show and single producti
 - In hard mode, sister group new fans are reduced 5x to be more balanced.
 - In hard mode, player relationships with girls decay each week so you have to talk to them sometimes. -2 to +1 to influence each week depending on salary satisfaction. -1 each week to romance (lose a level every ~2 years). -2 each week to friendship (lose a level every ~1 year).
 
-### Trait Fixes:
+### Trait Implementations:
 - Girls with Live Fast trait have double the rate of stat decreases after their peak age, both in random decreases and on birthdays.
 - Girls with Trendy trait have double the appeal to non-adults and half the appeal to adults.
 - Girls with Anxiety trait have -10 to all stats when a special event is waiting.
