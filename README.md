@@ -1,4 +1,4 @@
-![Unfair_plus](https://github.com/ui3TD/Idol-Manager-Unfair_plus/blob/main/Unfair_plus/thumb.png)
+<img src="https://github.com/ui3TD/Idol-Manager-Unfair_plus/blob/main/Unfair_plus/thumb.png" width=300></img>
 ## Unfair_plus
 ### Conflicts:
 Assembly-CSharp.dll<br>
