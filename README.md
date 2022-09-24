@@ -1,10 +1,27 @@
 ## Unfair_plus
+
+This mod is a game overhaul. It will change the behavior of the base game significantly. Remember to make backups of any files you replace. 
+
+Main Features:
+- Implementations of all traits
+- Major gameplay improvements and balancing.
+- Unfair+ difficulty that is very challenging.
+
+I've included a file to install traits only if you want.
+
 ### Conflicts:
 Assembly-CSharp.dll<br>
 \Business\business.json<br>
 \Constants\constants.json<br>
 \Idol\traits.json<br>
-\Shows\mc.json
+\Shows\mc.json<br>
+\Shows\genre.json<br>
+\Shows\medium.json<br>
+\Singles\choreography.json<br>
+\Singles\genres.json<br>
+\Singles\lyrics.json
+
+There have been several changes to fan appeal values of show and single production parameters. This will conflict with other similar mods like "Take It Easy On My Girls".
 
 ### Installation Instructions:
 1. Copy mod folder into the mod directory. On Windows, that's c:\Users\username\AppData\LocalLow\Glitch Pitch\Idol Manager\Mods\
@@ -42,6 +59,9 @@ Assembly-CSharp.dll<br>
 - Training vocal/dance stamina reduced to 1/day so that it's a bit more worth it. It takes on average 2 years to recoup on opportunity costs. It's more efficient if the girl is lower in skill or if the girl is in the front of senbatsu.
 - World tours are limited to 100 stamina so you can't go to all the countries at once.
 - World tours give 3.5x more fans to compensate for stamina limitation.
+- Reduced the appeals of show media platforms to encourage usage regardless of group themes.
+- Renamed show genres to make more sense.
+- Overhauled appeal of single genres/lyrics/choreo so that none are clearly better/worse, and so that negative effects are reduced to encourage trying new combinations.
 
 ### Bug Fixes:
 - Fixed senbatsu stats calculation so it doesn't punish you if you don't have enough idols to fill all rows.
@@ -79,7 +99,7 @@ Assembly-CSharp.dll<br>
 - If there is an Indiscreet member, girls in dating relationships unknown to the player have a 2% chance of having the relationship revealed each week.
 - When the relationship is revealed, the girls involved lose 30 mental stamina.
 - If the group forbids dating then a scandal point is added for each girl.
-- When girls break up, their relationship status is no longer known.
+- Fixed so that when girls dating each other break up, their relationship status is no longer known.
 
 ### What's included in the mod JSON files?
 - Special notification when the Indiscreet trait is activated.

@@ -1,0 +1,38 @@
+﻿[
+	{
+		"id": 0,
+		"title": "Radio",
+		"type": "radio",
+		"cost": 10000,
+		"description": "Start with a medium audience with little growth potential{linebreak}Stamina: {cost_stamina} /w (split amongst the cast)",
+		"cost_stamina":	30,
+		"appeal": {
+			"teen": [-0.03],
+			"youngAdult": [-0.02],
+			"adult": [0.05]
+		}
+	},{
+		"id": 1,
+		"title": "Internet",
+		"type": "internet",
+		"cost": 10000,
+		"description": "Start with a small but dedicated audience and grow it over time{linebreak}Stamina: {cost_stamina} /w (split amongst the cast)",
+		"cost_stamina":	60,
+		"appeal": {
+			"adult": [-0.05],
+			"teen": [0.03],
+			"youngAdult": [0.02]
+		}
+	},{
+		"id": 2,
+		"title": "TV",
+		"type": "tv",
+		"cost": 1000000,
+		"description": "Start with a large audience that loses interest quickly{linebreak}Stamina: {cost_stamina} /w (split amongst the cast)",
+		"cost_stamina":	90,
+		"appeal": {
+			"teen": [-0.05],
+			"adult": [0.05]
+		}
+	}
+]
