@@ -75,6 +75,7 @@ There have been several changes to fan appeal values of show and single producti
 ### Bug Fixes:
 - Fixed senbatsu stats calculation so it doesn't punish you if you don't have enough idols to fill all rows.
 - Fixed Concert revenue formula so that it shows accurate estimated values.
+- Fixed so that when girls dating each other break up, their relationship status is no longer known.
 
 ### Unfair+:
 - In Unfair+, there is significant customer churn rate. You lose fans each day and it's very difficult to break into the big leagues. At 100k fans, you can expect to lose 5% in a month unless you take measures to grow.
@@ -108,7 +109,6 @@ There have been several changes to fan appeal values of show and single producti
 - If there is an Indiscreet member, girls in dating relationships unknown to the player have a 2% chance of having the relationship revealed each week.
 - When the relationship is revealed, the girls involved lose 30 mental stamina.
 - If the group forbids dating then a scandal point is added for each girl.
-- Fixed so that when girls dating each other break up, their relationship status is no longer known.
 
 ### What's included in the mod JSON files?
 - Special notification when the Indiscreet trait is activated.
