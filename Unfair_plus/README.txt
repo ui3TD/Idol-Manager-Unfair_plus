@@ -5,11 +5,6 @@ Assembly-CSharp.dll
 \Constants\constants.json
 \Idol\traits.json
 \Shows\mc.json
-\Shows\genre.json
-\Shows\medium.json
-\Singles\choreography.json
-\Singles\genres.json
-\Singles\lyrics.json
 
 Installation Instructions:
 1. Copy mod folder into the mod directory. On Windows, that's c:\Users\username\AppData\LocalLow\Glitch Pitch\Idol Manager\Mods\
@@ -32,7 +27,8 @@ Gameplay Rebalancing and Improvements:
 - Dating status is visible for underage members so that the player can track gossip. Player cannot flirt with them though.
 - Drama business proposals get 3x the fans so they are more competitive with other methods of gaining fans.
 - Drama and Ad business proposals have their max base stamina reduced to 20 at high levels and their other parameters are scaled accordingly so it's easier to micromanage stamina.
-- Concert attendance formula rebalanced so it approaches zero with high ticket prices. This is most impactful in hard mode.
+- Concert revenue formula rebalanced so it approaches zero with high ticket prices. This is most impactful in hard mode.
+- Concert hype multiplier reduced for Club venue. Previously, clubs would have higher hype than other venues.
 - Theater show sales and subscriptions start to decay after 30 days since the last single due to staleness. It's not so severe in easy/normal mode, but more severe in hard mode.
 - Theater subscription revenue decreased by 90%. Most of the revenue goes to the streaming service provider.
 - Each MC fame point gives a boost to new fans, expecially so at high fame so that MCs have much more value late game.
@@ -47,14 +43,11 @@ Gameplay Rebalancing and Improvements:
 - Training vocal/dance stamina reduced to 1/day so that it's a bit more worth it. It takes on average 2 years to recoup on opportunity costs. It's more efficient if the girl is lower in skill or if the girl is in the front of senbatsu.
 - World tours are limited to 100 stamina so you can't go to all the countries at once.
 - World tours give 3.5x more fans to compensate for stamina limitation.
-- Reduced the appeals of show media platforms to encourage usage regardless of group themes.
-- Renamed show genres to make more sense.
-- Overhauled appeal of single genres/lyrics/choreo so that none are clearly better/worse, and so that negative effects are reduced to encourage trying new combinations.
 
 Bug Fixes:
 - Fixed senbatsu stats calculation so it doesn't punish you if you don't have enough idols to fill all rows.
 - Fixed Concert revenue formula so that it shows accurate estimated values.
-- Fixed so that when girls dating each other break up, their relationship status is no longer known.
+- Fixed so that when girls dating within the group break up, their relationship status is no longer known.
 
 Hard Mode (unfair+):
 - In hard mode, there is significant customer churn rate. You lose fans each day and it's very difficult to break into the big leagues. At 100k fans, you can expect to lose 5% in a month unless you take measures to grow.
@@ -88,6 +81,7 @@ Trait Fixes:
 - If there is an Indiscreet member, girls in dating relationships unknown to the player have a 2% chance of having the relationship revealed each week.
 - When the relationship is revealed, the girls involved lose 30 mental stamina.
 - If the group forbids dating then a scandal point is added for each girl.
+
 
 What's included in the mod JSON files?
 - Special notification when the Indiscreet trait is activated.

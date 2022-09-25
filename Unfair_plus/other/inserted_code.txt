@@ -1161,7 +1161,7 @@ public float GetAttendanceOfDemo()
 SEvents_Concerts._concert._projectedValues GetRevenue
 float hype = this.GetHype() * 100f;
 float num;
-if (hype <= 100f || this.Parent.Venue == SEvent_Concerts._venue.club)
+if (hype <= 100f)
 {
 	num = hype / 100f;
 }
@@ -1177,6 +1177,12 @@ return (long)Mathf.Round((float)this.GetNumberOfSoldTickets() * (float)this.Tick
 
 SEvents_Concerts._concert._projectedValues GetString
 int num = Mathf.FloorToInt(_val * 100f);
+
+SEvents_Concerts._concert RecalcProjectedValues
+if (this.Hype <= 100f)
+{
+	num = this.Hype / 100f;
+} 
 
 SEvent_Concerts StartConcert
 REMOVED: SEvent_Concerts.UpdateVenueUnlocked(this.Concert);
