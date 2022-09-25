@@ -1,5 +1,5 @@
 <img src="https://github.com/ui3TD/Idol-Manager-Unfair_plus/blob/main/Unfair_plus/thumb.png" width=300></img>
-## Unfair_plus
+# Unfair_plus
 
 This mod is a game overhaul. It will change the behavior of the base game significantly. Remember to make backups of any files you replace. 
 
@@ -14,7 +14,7 @@ I've included a file to install traits only if you want.
 
 **![> Download Traits_only](https://github.com/ui3TD/Idol-Manager-Unfair_plus/releases/tag/Traits_only)**
 
-### Conflicts:
+## Conflicts
 Assembly-CSharp.dll<br>
 \Business\business.json<br>
 \Constants\constants.json<br>
@@ -28,6 +28,7 @@ Assembly-CSharp.dll<br>
 
 There have been several changes to fan appeal values of show and single production parameters. This will conflict with other similar mods like "Take It Easy On My Girls".
 
+## Instructions
 ### Installation Instructions:
 1. Copy mod folder into the mod directory. On Windows, that's c:\Users\username\AppData\LocalLow\Glitch Pitch\Idol Manager\Mods\
 2. Navigate to the \IM_Data\Managed\ directory of Idol Manager.
@@ -41,6 +42,7 @@ There have been several changes to fan appeal values of show and single producti
 3. Delete the "Assembly-CSharp.dll" file and rename the "Assembly-CSharp_orig.dll" file to replace it.
 4. Disable or delete the mod in Idol Manager.
 
+## Changes
 ### Quality of Life:
 - Time passes 5x faster to decrease downtime.
 - Home row of keyboard (asdfg...) are hotkeys to open each sidebar tab.
