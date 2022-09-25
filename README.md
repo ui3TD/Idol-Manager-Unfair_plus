@@ -65,7 +65,7 @@ There have been several changes to fan appeal values of show and single producti
 - Dating status is visible for underage members so that the player can track gossip. Player cannot flirt with them though.
 - Drama business proposals get 3x the fans so they are more competitive with other methods of gaining fans.
 - Drama and Ad business proposals have their max base stamina reduced to 20 at high levels and their other parameters are scaled accordingly so it's easier to micromanage stamina.
-- Show MC fame points give a boost to new fans, expecially so at high fame so that MCs have much more value late game.
+- Show MC fame points give a boost to new fans, especially so at high fame so that MCs have much more value late game.
 - Single PVs have success chances increased by 33% so that they are more reliable in mid to late game but the crit success bonus has decreased to balance it.
 - Fake Scandal crit success bonus increased significantly so that it's more enticing. It is the fastest single marketing method to grow fans.
 - When releasing a single, the penalty for a decrease in fame and appeal now only considers past singles of the same group, so that sister groups are more independent.
