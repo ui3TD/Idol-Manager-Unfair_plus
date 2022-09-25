@@ -89,7 +89,7 @@ There have been several changes to fan appeal values of show and single producti
 - In Unfair+, Tokyo Coliseum is increased to 50,000 capacity, but has its base cost increased to 200,000,000 for more endgame challenge.
 - In Unfair+, idols at 10 fame will expect at least 10% of their earnings as salary so that the endgame is a bit more challenging.
 - In Unfair+, penalty for low salary satisfaction increased 10x. Each day, if salary gets under 50%, the graduation date moves closer by 10 days. If under 20% then 30 days.
-- In Unfair+, audience of TV and Radio shows decrease with fatigue so you can't run shows forever. New fan contribution to audience decreases proportional to fatigue squared.
+- In Unfair+, audience of TV and Radio shows decrease with fatigue so you're more motivated to create new shows. New fan contribution to audience decreases proportional to fatigue squared. Internet shows aren't affected.
 - In Unfair+, sister group new fans are reduced 5x to be more balanced.
 - In Unfair+, player relationships with girls decay each week so you have to talk to them sometimes. -2 to +1 to influence each week depending on salary satisfaction. -1 each week to romance (lose a level every ~2 years). -2 each week to friendship (lose a level every ~1 year).
 
