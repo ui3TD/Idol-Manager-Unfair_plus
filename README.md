@@ -8,7 +8,7 @@ Main Features:
 - **Rebalancing**: Several quality of life enhancements, and balance fixes allow more styles of gameplay. For example, you'll find that shows and contract jobs are quite useful. You'll also find that some of the cheesy tricks are no longer possible.
 - **Unfair+**: You'll face many challenges in this mode. Fans easily lose interest over time and will abandon your group. Girls will not tolerate low pay, and will demand a bigger cut of their profits. You'll have to put in effort to maintain friendships with your girls, and more. Try to conquer Tokyo Coliseum under these conditions!
 
-I've included a file to install traits only if you want. Download one or the other, NOT both.
+I've included a file to install traits only if you want. **Download one or the other, NOT both.**
 
 **![> Download Unfair_plus](https://github.com/ui3TD/Idol-Manager-Unfair_plus/releases/tag/MainRelease)**
 
