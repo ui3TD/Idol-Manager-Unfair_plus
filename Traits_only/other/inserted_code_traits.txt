@@ -334,15 +334,16 @@ else if (relationship.Dynamic == Relationships._relationship._dynamic.negative)
 {
 	relationship.Add(-0.1f);
 }
-if(singles.GetLatestReleasedSingle(false, relationship.Girls[0].GetGroup()) != null){
+if (singles.GetLatestReleasedSingle(false, relationship.Girls[0].GetGroup()) != null)
+{
 	if (singles.GetLatestReleasedSingle(false, relationship.Girls[0].GetGroup()).GetCenter() == relationship.Girls[0] && relationship.Girls[0].trait == traits._trait._type.Arrogant)
 	{
 		relationship.Add(-0.5f);
 	}
-	else if (singles.GetLatestReleasedSingle(false, relationship.Girls[1].GetGroup()).GetCenter() == relationship.Girls[1] && relationship.Girls[1].trait == traits._trait._type.Arrogant)
-	{
-		relationship.Add(-0.5f);
-	}
+}
+else if (singles.GetLatestReleasedSingle(false, relationship.Girls[1].GetGroup()) != null && singles.GetLatestReleasedSingle(false, relationship.Girls[1].GetGroup()).GetCenter() == relationship.Girls[1] && relationship.Girls[1].trait == traits._trait._type.Arrogant)
+{
+	relationship.Add(-0.5f);
 }
 
 Relationships._relationship Recalc

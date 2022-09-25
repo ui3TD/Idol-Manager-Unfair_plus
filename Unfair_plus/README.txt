@@ -47,6 +47,8 @@ Gameplay Rebalancing and Improvements:
 Bug Fixes:
 - Fixed senbatsu stats calculation so it doesn't punish you if you don't have enough idols to fill all rows.
 - Fixed Concert revenue formula so that it shows accurate estimated values.
+- Fixed Theater so that it uses stamina.
+- Fixed Theater so that it does not generate money on days off.
 - Fixed so that when girls dating within the group break up, their relationship status is no longer known.
 
 Hard Mode (unfair+):
