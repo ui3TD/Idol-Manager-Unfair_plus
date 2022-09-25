@@ -177,7 +177,142 @@ Theaters GetStaminaCost
 return num;
 
 Theaters CompleteDay
-stat.Revenue = num;
+foreach (Theaters._theater theater in Theaters.Theaters_)
+{
+	bool flag = false;
+	theater.Doing_Now = theater.GetSchedule().Type;
+	if (theater.Doing_Now == Theaters._theater._schedule._type.auto)
+	{
+		if (mainScript.chance(60))
+		{
+			theater.Doing_Now = Theaters._theater._schedule._type.performance;
+		}
+		else if (mainScript.chance(60))
+		{
+			theater.Doing_Now = Theaters._theater._schedule._type.manzai;
+		}
+		else
+		{
+			theater.Doing_Now = Theaters._theater._schedule._type.day_off;
+		}
+	}
+	if (theater.Doing_Now == Theaters._theater._schedule._type.manzai || theater.Doing_Now == Theaters._theater._schedule._type.performance)
+	{
+		flag = true;
+		num += theater.GetTicketSales();
+	}
+	if (staticVars.dateTime.Day == 1)
+	{
+		flag = true;
+		num += theater.GetSubRevenue();
+	}
+	if (flag)
+	{
+		theater.GetRoom().addFloat(Floats.type.icon_money, "", true, null, 0f, 1f, 0f, null);
+	}
+	if (Theaters.GetStaminaCost(theater.Doing_Now) != 0f)
+	{
+		foreach (data_girls.girls girls3 in theater.GetGroup().GetGirls(true, false, null))
+		{
+			girls3.addParam(data_girls._paramType.physicalStamina, -Theaters.GetStaminaCost(theater.Doing_Now), false);
+		}
+	}
+	if (theater.Doing_Now == Theaters._theater._schedule._type.performance || theater.Doing_Now == Theaters._theater._schedule._type.manzai)
+	{
+		foreach (data_girls.girls girls2 in theater.GetGroup().GetGirls(true, false, null))
+		{
+			if (theater.Doing_Now == Theaters._theater._schedule._type.performance)
+			{
+				this.AddTrainingPoints(girls2.getParam(data_girls._paramType.dance));
+				this.AddTrainingPoints(girls2.getParam(data_girls._paramType.vocal));
+			}
+			else if (theater.Doing_Now == Theaters._theater._schedule._type.manzai)
+			{
+				this.AddTrainingPoints(girls2.getParam(data_girls._paramType.funny));
+				this.AddTrainingPoints(girls2.getParam(data_girls._paramType.smart));
+			}
+		}
+	}
+	int subscribers = 0;
+	if (theater.AreSubsUnlocked())
+	{
+		subscribers = theater.GetNewSubscribers();
+	}
+	Theaters._theater._stat stat = new Theaters._theater._stat();
+	stat.Schedule = new Theaters._theater._schedule();
+	stat.Schedule.Type = theater.Doing_Now;
+	stat.Schedule.FanType_Everyone = theater.GetSchedule().FanType_Everyone;
+	stat.Schedule.FanType = theater.GetSchedule().FanType;
+	stat.Date = staticVars.dateTime;
+	stat.Attendance = theater.GetAttendance();
+	stat.Revenue = theater.GetTicketSales();
+	if (theater.Doing_Now == Theaters._theater._schedule._type.day_off)
+	{
+		stat.Revenue = 0L;
+	}
+	stat.Subscribers = subscribers;
+	theater.Stats.Add(stat);
+	if (theater.Stats.Count > 90)
+	{
+		theater.Stats.RemoveAt(0);
+	}
+}
+
+Theaters GetLastWeekEarning
+public static long GetLastWeekEarning()
+{
+	long num = 0L;
+	foreach (Theaters._theater theater in Theaters.Theaters_)
+	{
+		int num2 = 0;
+		for (int i = theater.Stats.Count - 1; i >= 0; i--)
+		{
+			num += theater.Stats[i].Revenue;
+			num2++;
+			if (num2 >= 7)
+			{
+				break;
+			}
+		}
+		if (theater.AreSubsUnlocked())
+		{
+			num += theater.GetSubRevenue();
+		}
+	}
+	return num;
+}
+
+Theaters._theater GetAvgAttendance
+int num4 = 0;
+while ((float)num3 >= (float)this.Stats.Count - num2)
+{
+	if (this.Stats[num3].Schedule.Type != Theaters._theater._schedule._type.day_off)
+	{
+		num += (float)this.Stats[num3].Attendance;
+		num4++;
+	}
+	num3--;
+}
+if (num4 != 0)
+{
+	num /= (float)num4;
+}
+
+Theaters._theater GetAvgRevenue
+int num4 = 0;
+while ((float)num3 >= (float)this.Stats.Count - num2)
+{
+	if (this.Stats[num3].Schedule.Type != Theaters._theater._schedule._type.day_off)
+	{
+		num += (float)this.Stats[num3].Revenue;
+		num4++;
+	}
+	num3--;
+}
+if (num4 != 0)
+{
+	num /= (float)num4;
+}
 
 Theaters._theater GetPriceCoeff
 float num = function.GetY((float)Price);
@@ -419,24 +554,46 @@ foreach (data_girls.girls girls in Girls)
 		{
 			num -= 20f;
 		}
-		if (singles.GetLatestReleasedSingle(false, girls.GetGroup()) != null)
+		singles._single single = singles.GetLatestReleasedSingle(false, girls.GetGroup());
+		singles._single single2 = singles.GetLatestReleasedSingle(false, Groups.GetMainGroup());
+		singles._single single3 = null;
+		if (single == null)
 		{
-		if (girls != null && girls.trait == traits._trait._type.Complacent && girls == singles.GetLatestReleasedSingle(false,girls.GetGroup()).GetCenter() && Type == data_girls._paramType.vocal)
+			single = single2;
+		}
+		if (single != null)
+		{
+			if (single.ReleaseData.ReleaseDate > single2.ReleaseData.ReleaseDate)
+			{
+				single3 = single;
+			}
+			else if (single.ReleaseData.ReleaseDate < single2.ReleaseData.ReleaseDate)
+			{
+				single3 = single2;
+			}
+			else if (single.ReleaseData.Sales > single2.ReleaseData.Sales)
+			{
+				single3 = single;
+			}
+			else
+			{
+				single3 = single2;
+			}
+		}
+		if (single != null && girls != null && girls.trait == traits._trait._type.Complacent && (girls == single.GetCenter() || girls == single2.GetCenter()) && (Type == data_girls._paramType.vocal || Type == data_girls._paramType.dance))
 		{
 			num -= 20f;
 		}
-		if (girls != null && girls.trait == traits._trait._type.Complacent && girls == singles.GetLatestReleasedSingle(false,girls.GetGroup()).GetCenter() && Type == data_girls._paramType.dance)
+		if (single3 != null && girls != null && (staticVars.dateTime - single3.ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && single3.ReleaseData.Chart_Position != 1 && data_girls.IsStatParam(Type))
 		{
-			num -= 20f;
-		}
-		if (girls != null && girls.trait == traits._trait._type.Defeatist && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.Chart_Position != 1 && data_girls.IsStatParam(Type))
-		{
-			num -= 20f;
-		}
-		if (girls != null && girls.trait == traits._trait._type.Underdog && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.Chart_Position != 1 && data_girls.IsStatParam(Type))
-		{
-			num += 20f;
-		}
+			if (girls.trait == traits._trait._type.Defeatist)
+			{
+				num -= 20f;
+			}
+			else if (girls.trait == traits._trait._type.Underdog)
+			{
+				num += 20f;
+			}
 		}
 		if (girls != null && girls.trait == traits._trait._type.Lone_Wolf)
 		{
@@ -598,16 +755,42 @@ if (_girl != null && _girl.trait == traits._trait._type.Worrier && resources.Get
 {
 	val -= 20f;
 }
-if (singles.GetLatestReleasedSingle(false, _girl.GetGroup()) != null)
+singles._single single = singles.GetLatestReleasedSingle(false, _girl.GetGroup());
+singles._single single2 = singles.GetLatestReleasedSingle(false, Groups.GetMainGroup());
+singles._single single3 = null;
+if (single == null)
 {
-if (_girl != null && _girl.trait == traits._trait._type.Defeatist && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, _girl.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, _girl.GetGroup()).ReleaseData.Chart_Position != 1 && data_girls.IsStatParam(this.skill))
-{
-	val -= 20f;
+	single = single2;
 }
-if (_girl != null && _girl.trait == traits._trait._type.Underdog && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, _girl.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, _girl.GetGroup()).ReleaseData.Chart_Position != 1 && data_girls.IsStatParam(this.skill))
+if (single != null)
 {
-	val += 20f;
+	if (single.ReleaseData.ReleaseDate > single2.ReleaseData.ReleaseDate)
+	{
+		single3 = single;
+	}
+	else if (single.ReleaseData.ReleaseDate < single2.ReleaseData.ReleaseDate)
+	{
+		single3 = single2;
+	}
+	else if (single.ReleaseData.Sales > single2.ReleaseData.Sales)
+	{
+		single3 = single;
+	}
+	else
+	{
+		single3 = single2;
+	}
 }
+if (single3 != null && _girl != null && (staticVars.dateTime - single3.ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && single3.ReleaseData.Chart_Position != 1 && data_girls.IsStatParam(this.skill))
+{
+	if (_girl.trait == traits._trait._type.Defeatist)
+	{
+		val -= 20f;
+	}
+	else if (_girl.trait == traits._trait._type.Underdog)
+	{
+		val += 20f;
+	}
 }
 if (val < 1f)
 {
@@ -665,14 +848,25 @@ else if (relationship.Dynamic == Relationships._relationship._dynamic.negative)
 {
 	relationship.Add(-0.1f);
 }
-if (singles.GetLatestReleasedSingle(false, relationship.Girls[0].GetGroup()) != null)
+singles._single single = singles.GetLatestReleasedSingle(false, relationship.Girls[0].GetGroup());
+singles._single single2 = singles.GetLatestReleasedSingle(false, relationship.Girls[1].GetGroup());
+singles._single single3 = singles.GetLatestReleasedSingle(false, Groups.GetMainGroup());
+if (single == null)
 {
-	if (singles.GetLatestReleasedSingle(false, relationship.Girls[1].GetGroup()).GetCenter() == relationship.Girls[1] && relationship.Girls[1].trait == traits._trait._type.Arrogant)
+	single = single3;
+}
+if (single2 == null)
+{
+	single2 = single3;
+}
+if (single != null)
+{
+	if ((single.GetCenter() == relationship.Girls[0] || single3.GetCenter() == relationship.Girls[0]) && relationship.Girls[0].trait == traits._trait._type.Arrogant)
 	{
 		relationship.Add(-0.5f);
 	}
 }
-else if (singles.GetLatestReleasedSingle(false, relationship.Girls[1].GetGroup()) != null && singles.GetLatestReleasedSingle(false, relationship.Girls[1].GetGroup()).GetCenter() == relationship.Girls[1] && relationship.Girls[1].trait == traits._trait._type.Arrogant)
+else if (single2 != null && (single2.GetCenter() == relationship.Girls[1] || single3.GetCenter() == relationship.Girls[1]) && relationship.Girls[1].trait == traits._trait._type.Arrogant)
 {
 	relationship.Add(-0.5f);
 }
@@ -1050,23 +1244,45 @@ for (int i = 0; i <= 4; i++)
 				{
 					num4 -= 20f;
 				}
-				if (singles.GetLatestReleasedSingle(false, girls.GetGroup()) != null)
+				singles._single single = singles.GetLatestReleasedSingle(false, girls.GetGroup());
+				singles._single single2 = singles.GetLatestReleasedSingle(false, Groups.GetMainGroup());
+				singles._single single3 = null;
+				if (single == null)
 				{
-					if (girls != null && girls.trait == traits._trait._type.Complacent && girls == singles.GetLatestReleasedSingle(false, girls.GetGroup()).GetCenter() && type == data_girls._paramType.vocal)
+					single = single2;
+				}
+				if (single != null)
+				{
+					if (single.ReleaseData.ReleaseDate > single2.ReleaseData.ReleaseDate)
 					{
-						num4 -= 20f;
+						single3 = single;
 					}
-					if (girls != null && girls.trait == traits._trait._type.Complacent && girls == singles.GetLatestReleasedSingle(false, girls.GetGroup()).GetCenter() && type == data_girls._paramType.dance)
+					else if (single.ReleaseData.ReleaseDate < single2.ReleaseData.ReleaseDate)
 					{
-						num4 -= 20f;
+						single3 = single2;
 					}
-					if (girls != null && girls.trait == traits._trait._type.Defeatist && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.Chart_Position != 1 && data_girls.IsStatParam(type))
+					else if (single.ReleaseData.Sales > single2.ReleaseData.Sales)
 					{
-						num4 -= 20f;
+						single3 = single;
 					}
-					if (girls != null && girls.trait == traits._trait._type.Underdog && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.Chart_Position != 1 && data_girls.IsStatParam(type))
+					else
 					{
-						num4 += 20f;
+						single3 = single2;
+					}
+				}
+				if (single != null && girls != null && girls.trait == traits._trait._type.Complacent && (girls == single.GetCenter() || girls == single2.GetCenter()) && (type == data_girls._paramType.vocal || type == data_girls._paramType.dance))
+				{
+					num5 -= 20f;
+				}
+				if (single3 != null && girls != null && (staticVars.dateTime - single3.ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && single3.ReleaseData.Chart_Position != 1 && data_girls.IsStatParam(type))
+				{
+					if (girls.trait == traits._trait._type.Defeatist)
+					{
+						num5 -= 20f;
+					}
+					else if (girls.trait == traits._trait._type.Underdog)
+					{
+						num5 += 20f;
 					}
 				}
 			}
@@ -1241,80 +1457,118 @@ if (staticVars.IsHard())
 }
 
 SEvent_Concerts._concert._song GetSkillValue
-int ind = 0;
-using (List<SEvent_Tour.tour>.Enumerator enumerator = SEvent_Tour.Tours.GetEnumerator())
+public int GetSkillValue()
 {
-	while (enumerator.MoveNext())
+	if (this.Center == null)
 	{
-		if (enumerator.Current.Status == SEvent_Tour.tour._status.normal)
+		return 0;
+	}
+	int num = 0;
+	using (List<SEvent_Tour.tour>.Enumerator enumerator = SEvent_Tour.Tours.GetEnumerator())
+	{
+		while (enumerator.MoveNext())
 		{
-			ind++;
+			if (enumerator.Current.Status == SEvent_Tour.tour._status.normal)
+			{
+				num++;
+			}
 		}
 	}
-}
-using (List<SEvent_SSK._SSK>.Enumerator enumerator2 = SEvent_SSK.Elections.GetEnumerator())
-{
-	while (enumerator2.MoveNext())
+	using (List<SEvent_SSK._SSK>.Enumerator enumerator2 = SEvent_SSK.Elections.GetEnumerator())
 	{
-		if (enumerator2.Current.Status == SEvent_Tour.tour._status.normal)
+		while (enumerator2.MoveNext())
 		{
-			ind++;
+			if (enumerator2.Current.Status == SEvent_Tour.tour._status.normal)
+			{
+				num++;
+			}
 		}
 	}
-}
-using (List<SEvent_Concerts._concert>.Enumerator enumerator3 = SEvent_Concerts.Concerts.GetEnumerator())
-{
-	while (enumerator3.MoveNext())
+	using (List<SEvent_Concerts._concert>.Enumerator enumerator3 = SEvent_Concerts.Concerts.GetEnumerator())
 	{
-		if (enumerator3.Current.Status == SEvent_Tour.tour._status.normal)
+		while (enumerator3.MoveNext())
 		{
-			ind++;
+			if (enumerator3.Current.Status == SEvent_Tour.tour._status.normal)
+			{
+				num++;
+			}
 		}
 	}
+	float num2 = this.Center.getParam(data_girls._paramType.dance).val;
+	float num3 = this.Center.getParam(data_girls._paramType.vocal).val;
+	if (this.Center != null && this.Center.trait == traits._trait._type.Anxiety && num > 0)
+	{
+		num2 -= 10f;
+		num3 -= 10f;
+	}
+	if (this.Center != null && this.Center.trait == traits._trait._type.Clumsy)
+	{
+		num2 -= 30f;
+	}
+	if (this.Center != null && this.Center.trait == traits._trait._type.Worrier && resources.GetScandalPointsTotal() > 0L)
+	{
+		num2 -= 20f;
+		num3 -= 20f;
+	}
+	singles._single single = singles.GetLatestReleasedSingle(false, this.Center.GetGroup());
+	singles._single single2 = singles.GetLatestReleasedSingle(false, Groups.GetMainGroup());
+	singles._single single3 = null;
+	if (single == null)
+	{
+		single = single2;
+	}
+	if (single != null)
+	{
+		if (single.ReleaseData.ReleaseDate > single2.ReleaseData.ReleaseDate)
+		{
+			single3 = single;
+		}
+		else if (single.ReleaseData.ReleaseDate < single2.ReleaseData.ReleaseDate)
+		{
+			single3 = single2;
+		}
+		else if (single.ReleaseData.Sales > single2.ReleaseData.Sales)
+		{
+			single3 = single;
+		}
+		else
+		{
+			single3 = single2;
+		}
+	}
+	if (single != null && this.Center != null && this.Center.trait == traits._trait._type.Complacent && (this.Center == single.GetCenter() || this.Center == single2.GetCenter()))
+	{
+		num2 -= 20f;
+		num3 -= 20f;
+	}
+	if (single3 != null && this.Center != null && (staticVars.dateTime - single3.ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && single3.ReleaseData.Chart_Position != 1)
+	{
+		if (this.Center.trait == traits._trait._type.Defeatist)
+		{
+			num2 -= 20f;
+			num3 -= 20f;
+		}
+		else if (this.Center.trait == traits._trait._type.Underdog)
+		{
+			num2 += 20f;
+			num3 += 20f;
+		}
+	}
+	if (num2 < 1f)
+	{
+		num2 = 1f;
+	}
+	if (num3 < 1f)
+	{
+		num3 = 1f;
+	}
+	int num4 = Mathf.FloorToInt((0f + num2 + num3) / 2f);
+	if (this.Center == this.Single.GetCenter() && num4 < 80)
+	{
+		return 80;
+	}
+	return num4;
 }
-float val = this.Center.getParam(data_girls._paramType.dance).val;
-float val2 = this.Center.getParam(data_girls._paramType.vocal).val;
-if (this.Center != null && this.Center.trait == traits._trait._type.Anxiety && ind > 0)
-{
-	val -= 10f;
-	val2 -= 10f;
-}
-if (this.Center != null && this.Center.trait == traits._trait._type.Clumsy)
-{
-	val -= 30f;
-}
-if (this.Center != null && this.Center.trait == traits._trait._type.Worrier && resources.GetScandalPointsTotal() > 0L)
-{
-	val -= 20f;
-	val2 -= 20f;
-}
-if (singles.GetLatestReleasedSingle(false, this.Center.GetGroup()) != null)
-{
-if (this.Center != null && this.Center.trait == traits._trait._type.Complacent && this.Center == singles.GetLatestReleasedSingle(false, this.Center.GetGroup()).GetCenter())
-{
-	val -= 20f;
-	val2 -= 20f;
-}
-if (this.Center != null && this.Center.trait == traits._trait._type.Defeatist && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, this.Center.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, this.Center.GetGroup()).ReleaseData.Chart_Position != 1)
-{
-	val -= 20f;
-	val2 -= 20f;
-}
-if (this.Center != null && this.Center.trait == traits._trait._type.Underdog && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, this.Center.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, this.Center.GetGroup()).ReleaseData.Chart_Position != 1)
-{
-	val += 20f;
-	val2 += 20f;
-}
-}
-if (val < 1f)
-{
-	val = 1f;
-}
-if (val2 < 1f)
-{
-	val2 = 1f;
-}
-int num = Mathf.FloorToInt((0f + val + val2) / 2f);
 
 SEvent_Concerts._concert._mc GetSkillValue
 float val = girls.getParam(data_girls._paramType.smart).val;
@@ -1363,18 +1617,44 @@ if (girls != null && girls.trait == traits._trait._type.Worrier && resources.Get
 	val -= 20f;
 	val2 -= 20f;
 }
-if (singles.GetLatestReleasedSingle(false, girls.GetGroup()) != null)
+singles._single single = singles.GetLatestReleasedSingle(false, girls.GetGroup());
+singles._single single2 = singles.GetLatestReleasedSingle(false, Groups.GetMainGroup());
+singles._single single3 = null;
+if (single == null)
 {
-if (girls != null && girls.trait == traits._trait._type.Defeatist && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.Chart_Position != 1)
-{
-	val -= 20f;
-	val2 -= 20f;
+	single = single2;
 }
-if (girls != null && girls.trait == traits._trait._type.Underdog && (staticVars.dateTime - singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && singles.GetLatestReleasedSingle(false, girls.GetGroup()).ReleaseData.Chart_Position != 1)
+if (single != null)
 {
-	val += 20f;
-	val2 += 20f;
+	if (single.ReleaseData.ReleaseDate > single2.ReleaseData.ReleaseDate)
+	{
+		single3 = single;
+	}
+	else if (single.ReleaseData.ReleaseDate < single2.ReleaseData.ReleaseDate)
+	{
+		single3 = single2;
+	}
+	else if (single.ReleaseData.Sales > single2.ReleaseData.Sales)
+	{
+		single3 = single;
+	}
+	else
+	{
+		single3 = single2;
+	}
 }
+if (single3 != null && girls != null && (staticVars.dateTime - single3.ReleaseData.ReleaseDate).Days >= staticVars.dateTime.Day && single3.ReleaseData.Chart_Position != 1)
+{
+	if (girls.trait == traits._trait._type.Defeatist)
+	{
+		val -= 20f;
+		val2 -= 20f;
+	}
+	else if (girls.trait == traits._trait._type.Underdog)
+	{
+		val += 20f;
+		val2 += 20f;
+	}
 }
 if (val < 1f)
 {

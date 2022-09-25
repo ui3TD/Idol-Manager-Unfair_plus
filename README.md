@@ -79,6 +79,8 @@ There have been several changes to fan appeal values of show and single producti
 - Fixed Concert revenue formula so that it shows accurate estimated values.
 - Fixed Theater so that it uses stamina.
 - Fixed Theater so that it does not generate money on days off.
+- Fixed Theater so that revenue stats are not offset by one day.
+- Fixed Theater so that money tooltip includes subscription earnings.
 - Fixed so that when girls dating each other break up, their relationship status is no longer known.
 
 ### Unfair+ Difficulty:
