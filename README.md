@@ -86,7 +86,7 @@ There have been several changes to fan appeal values of show and single producti
 
 ### Unfair+ Difficulty:
 - In Unfair+, there is significant customer churn rate. You lose fans each day and it's very difficult to break into the big leagues. At 100k fans, you can expect to lose 5% in a month unless you take measures to grow.
-- In Unfair+, Coliseum level concert venues is increased to 50,000 capacity, but have a base cost increased to 200,000,000 to add more endgame challenge.
+- In Unfair+, Tokyo Coliseum is increased to 50,000 capacity, but has its base cost increased to 200,000,000 for more endgame challenge.
 - In Unfair+, idols at 10 fame will expect at least 10% of their earnings as salary so that the endgame is a bit more challenging.
 - In Unfair+, penalty for low salary satisfaction increased 10x. Each day, if salary gets under 50%, the graduation date moves closer by 10 days. If under 20% then 30 days.
 - In Unfair+, audience of TV and Radio shows decrease with fatigue so you can't run shows forever. New fan contribution to audience decreases proportional to fatigue squared.
