@@ -77,6 +77,8 @@ There have been several changes to fan appeal values of show and single producti
 ### Bug Fixes (All difficult modes):
 - Fixed senbatsu stats calculation so it doesn't punish you if you don't have enough idols to fill all rows.
 - Fixed Concert revenue formula so that it shows accurate estimated values.
+- Fixed Theater so that it uses stamina.
+- Fixed Theater so that it does not generate money on days off.
 - Fixed so that when girls dating each other break up, their relationship status is no longer known.
 
 ### Unfair+ Difficulty:
