@@ -43,12 +43,12 @@ There have been several changes to fan appeal values of show and single producti
 4. Disable or delete the mod in Idol Manager.
 
 ## Changes
-### Quality of Life (All difficult modes):
+### Quality of Life (All difficulty modes):
 - Time passes 5x faster to decrease downtime.
 - Home row of keyboard (asdfg...) are hotkeys to open each sidebar tab.
 - Show genres renamed to make more sense.
 
-### Things made more challenging (All difficult modes):
+### Things made more challenging (All difficulty modes):
 - 20000 yen/wk is the expected starting salary for 100% satisfaction so that it's aligned with minimum wage.
 - 20000 yen/wk is the default starting salary so that it's aligned with minimum wage.
 - Concert revenue formula rebalanced so it approaches zero with high ticket prices. This is most impactful in Unfair+.
@@ -60,7 +60,7 @@ There have been several changes to fan appeal values of show and single producti
 - Staff cannot be fired using scandal points within the first month so that you can't just hire and immediately fire staff to get rid of points.
 - World tours are limited to 100 stamina so you can't go to all the countries at once.
 
-### Things made more forgiving (All difficult modes):
+### Things made more forgiving (All difficulty modes):
 - Probabilty of being lesbian reduced to 6% and probability for bisexuality reduced to 5% if the player is male so that there is less in-group dating. Probabilities unchanged for female players so that they can romance the idols easily.
 - Dating status is visible for underage members so that the player can track gossip. Player cannot flirt with them though.
 - Drama business proposals get 3x the fans so they are more competitive with other methods of gaining fans.
@@ -74,7 +74,7 @@ There have been several changes to fan appeal values of show and single producti
 - World tours give 3.5x more fans to compensate for stamina limitation.
 - Single genres/lyrics/choreo appeals overhauled so that none are clearly better, and so that negative effects are reduced to encourage trying new combinations.
 
-### Bug Fixes (All difficult modes):
+### Bug Fixes (All difficulty modes):
 - Fixed senbatsu stats calculation so it doesn't punish you if you don't have enough idols to fill all rows.
 - Fixed Concert revenue formula so that it shows accurate estimated values.
 - Fixed Theater so that it uses stamina.
@@ -92,7 +92,7 @@ There have been several changes to fan appeal values of show and single producti
 - In Unfair+, sister group new fans are reduced 5x to be more balanced.
 - In Unfair+, player relationships with girls decay each week so you have to talk to them sometimes. -2 to +1 to influence each week depending on salary satisfaction. -1 each week to romance (lose a level every ~2 years). -2 each week to friendship (lose a level every ~1 year).
 
-### Trait Implementations (All difficult modes):
+### Trait Implementations (All difficulty modes):
 - Girls with Live Fast trait have double the rate of stat decreases after their peak age, both in random decreases and on birthdays.
 - Girls with Trendy trait have double the appeal to non-adults and half the appeal to adults.
 - Girls with Anxiety trait have -10 to all stats when a special event is waiting.
