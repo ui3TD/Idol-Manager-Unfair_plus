@@ -47,6 +47,7 @@ There have been several changes to fan appeal values of show and single producti
 - 20000 yen/wk is the default starting salary so that it's aligned with minimum wage.
 - Concert revenue formula rebalanced so it approaches zero with high ticket prices. This is most impactful in hard mode.
 - Concert venues can only be unlocked if you've sold out the previous venue with a profit.
+- Concert Club venue had its hype multiplier reduced. Previously, clubs had higher hype than other venues.
 - Theater show sales and subscriptions start to decay after 30 days since the last single due to staleness. It's not so severe in easy/normal mode, but more severe in hard mode.
 - Theater subscription revenue decreased by 90%. Most of the revenue goes to the streaming service provider.
 - Show media platform appeal values reduced to encourage usage regardless of group themes.
