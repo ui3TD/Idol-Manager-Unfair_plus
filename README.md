@@ -68,7 +68,7 @@ There have been several changes to fan appeal values of show and single producti
 - Fake Scandal crit success bonus increased significantly so that it's more enticing. It is the fastest single marketing method to grow fans.
 - When releasing a single, the penalty for a decrease in fame and appeal now only considers past singles of the same group, so that sister groups are more independent.
 - Sister group minimum member limit for creation removed to allow more freedom (it does introduce some imbalance).
-- Training vocal/dance stamina reduced to 1/day so that it's a bit more worth it. It takes on average 2 years to recoup on opportunity costs. It's more efficient if the girl is lower in skill or if the girl is in the front of senbatsu.
+- Training vocal/dance stamina reduced to 1 pt/day so that it's a bit more worth it. It takes on average 2 years to recoup on opportunity costs. It's more efficient if the girl is lower in skill or if the girl is in the front of senbatsu.
 - World tours give 3.5x more fans to compensate for stamina limitation.
 - Single genres/lyrics/choreo appeals overhauled so that none are clearly better, and so that negative effects are reduced to encourage trying new combinations.
 
