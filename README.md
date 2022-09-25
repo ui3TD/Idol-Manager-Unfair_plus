@@ -47,6 +47,8 @@ There have been several changes to fan appeal values of show and single producti
 - Time passes 5x faster to decrease downtime.
 - Home row of keyboard (asdfg...) are hotkeys to open each sidebar tab.
 - Show genres renamed to make more sense.
+- Dating status is visible for underage members so that the player can track gossip. Player cannot flirt with them though.
+- Sister group minimum member limit for creation removed to allow more freedom (it does introduce some imbalance).
 
 ### Things made more challenging (All difficulty modes):
 - 20000 yen/wk is the expected starting salary for 100% satisfaction so that it's aligned with minimum wage.
@@ -62,14 +64,12 @@ There have been several changes to fan appeal values of show and single producti
 
 ### Things made more forgiving (All difficulty modes):
 - Probabilty of being lesbian reduced to 6% and probability for bisexuality reduced to 5% if the player is male so that there is less in-group dating. Probabilities unchanged for female players so that they can romance the idols easily.
-- Dating status is visible for underage members so that the player can track gossip. Player cannot flirt with them though.
 - Drama business proposals get 3x the fans so they are more competitive with other methods of gaining fans.
 - Drama and Ad business proposals have their max base stamina reduced to 20 at high levels and their other parameters are scaled accordingly so it's easier to micromanage stamina.
 - Show MC fame points give a boost to new fans, especially so at high fame so that MCs have much more value late game.
 - Single PVs have success chances increased by 33% so that they are more reliable in mid to late game but the crit success bonus has decreased to balance it.
 - Fake Scandal crit success bonus increased significantly so that it's more enticing. It is the fastest single marketing method to grow fans.
 - When releasing a single, the penalty for a decrease in fame and appeal now only considers past singles of the same group, so that sister groups are more independent.
-- Sister group minimum member limit for creation removed to allow more freedom (it does introduce some imbalance).
 - Training vocal/dance stamina reduced to 1 pt/day so that it's a bit more worth it. It takes on average 2 years to recoup on opportunity costs. It's more efficient if the girl is lower in skill or if the girl is in the front of senbatsu.
 - World tours give 3.5x more fans to compensate for stamina limitation.
 - Single genres/lyrics/choreo appeals overhauled so that none are clearly better, and so that negative effects are reduced to encourage trying new combinations.
