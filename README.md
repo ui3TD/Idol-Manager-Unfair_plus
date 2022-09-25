@@ -49,10 +49,10 @@ There have been several changes to fan appeal values of show and single producti
 ### Things made more challenging:
 - 20000 yen/wk is the expected starting salary for 100% satisfaction so that it's aligned with minimum wage.
 - 20000 yen/wk is the default starting salary so that it's aligned with minimum wage.
-- Concert revenue formula rebalanced so it approaches zero with high ticket prices. This is most impactful in hard mode.
+- Concert revenue formula rebalanced so it approaches zero with high ticket prices. This is most impactful in Unfair+.
 - Concert venues can only be unlocked if you've sold out the previous venue with a profit.
 - Concert Club venue had its hype multiplier reduced. Previously, clubs had higher hype than other venues.
-- Theater show sales and subscriptions start to decay after 30 days since the last single due to staleness. It's not so severe in easy/normal mode, but more severe in hard mode.
+- Theater show sales and subscriptions start to decay after 30 days since the last single due to staleness. It's not so severe in easy/normal mode, but more severe in Unfair+.
 - Theater subscription revenue decreased by 90%. Most of the revenue goes to the streaming service provider.
 - Show media platform appeal values reduced to encourage usage regardless of group themes.
 - Staff cannot be fired using scandal points within the first month so that you can't just hire and immediately fire staff to get rid of points.
@@ -76,14 +76,14 @@ There have been several changes to fan appeal values of show and single producti
 - Fixed senbatsu stats calculation so it doesn't punish you if you don't have enough idols to fill all rows.
 - Fixed Concert revenue formula so that it shows accurate estimated values.
 
-### Hard Mode (unfair+):
-- In hard mode, there is significant customer churn rate. You lose fans each day and it's very difficult to break into the big leagues. At 100k fans, you can expect to lose 5% in a month unless you take measures to grow.
-- Coliseum level concert venues in hard mode increased to 50,000 capacity, but have a base cost increased to 200,000,000 to add more endgame challenge.
-- In hard mode, idols at 10 fame will expect at least 10% of their earnings as salary so that the endgame is a bit more challenging.
-- In hard mode, penalty for low salary satisfaction increased 10x. Each day, if salary gets under 50%, the graduation date moves closer by 10 days. If under 20% then 30 days.
-- In hard mode, audience of TV and Radio shows decrease with fatigue so you can't run shows forever. New fan contribution to audience decreases proportional to fatigue squared.
-- In hard mode, sister group new fans are reduced 5x to be more balanced.
-- In hard mode, player relationships with girls decay each week so you have to talk to them sometimes. -2 to +1 to influence each week depending on salary satisfaction. -1 each week to romance (lose a level every ~2 years). -2 each week to friendship (lose a level every ~1 year).
+### Unfair+:
+- In Unfair+, there is significant customer churn rate. You lose fans each day and it's very difficult to break into the big leagues. At 100k fans, you can expect to lose 5% in a month unless you take measures to grow.
+- In Unfair+, Coliseum level concert venues in increased to 50,000 capacity, but have a base cost increased to 200,000,000 to add more endgame challenge.
+- In Unfair+, idols at 10 fame will expect at least 10% of their earnings as salary so that the endgame is a bit more challenging.
+- In Unfair+, penalty for low salary satisfaction increased 10x. Each day, if salary gets under 50%, the graduation date moves closer by 10 days. If under 20% then 30 days.
+- In Unfair+, audience of TV and Radio shows decrease with fatigue so you can't run shows forever. New fan contribution to audience decreases proportional to fatigue squared.
+- In Unfair+, sister group new fans are reduced 5x to be more balanced.
+- In Unfair+, player relationships with girls decay each week so you have to talk to them sometimes. -2 to +1 to influence each week depending on salary satisfaction. -1 each week to romance (lose a level every ~2 years). -2 each week to friendship (lose a level every ~1 year).
 
 ### Trait Implementations:
 - Girls with Live Fast trait have double the rate of stat decreases after their peak age, both in random decreases and on birthdays.
