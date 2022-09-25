@@ -46,7 +46,7 @@ There have been several changes to fan appeal values of show and single producti
 - Home row of keyboard (asdfg...) are hotkeys to open each sidebar tab.
 - Show genres renamed to make more sense.
 
-### Nerfs (things made more challenging):
+### Things made more challenging:
 - 20000 yen/wk is the expected starting salary for 100% satisfaction so that it's aligned with minimum wage.
 - 20000 yen/wk is the default starting salary so that it's aligned with minimum wage.
 - Concert revenue formula rebalanced so it approaches zero with high ticket prices. This is most impactful in hard mode.
@@ -58,7 +58,7 @@ There have been several changes to fan appeal values of show and single producti
 - Staff cannot be fired using scandal points within the first month so that you can't just hire and immediately fire staff to get rid of points.
 - World tours are limited to 100 stamina so you can't go to all the countries at once.
 
-### Buffs (things made more forgiving):
+### Things made more forgiving:
 - Probabilty of being lesbian reduced to 6% and probability for bisexuality reduced to 5% if the player is male so that there is less in-group dating. Probabilities unchanged for female players so that they can romance the idols easily.
 - Dating status is visible for underage members so that the player can track gossip. Player cannot flirt with them though.
 - Drama business proposals get 3x the fans so they are more competitive with other methods of gaining fans.
