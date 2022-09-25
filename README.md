@@ -10,9 +10,9 @@ Main Features:
 
 I've included a file to install traits only if you want.
 
-![> Download Unfair_plus](https://github.com/ui3TD/Idol-Manager-Unfair_plus/releases/tag/MainRelease)
+**![> Download Unfair_plus](https://github.com/ui3TD/Idol-Manager-Unfair_plus/releases/tag/MainRelease)**
 
-![> Download Traits_only](https://github.com/ui3TD/Idol-Manager-Unfair_plus/releases/tag/Traits_only)
+**![> Download Traits_only](https://github.com/ui3TD/Idol-Manager-Unfair_plus/releases/tag/Traits_only)**
 
 ### Conflicts:
 Assembly-CSharp.dll<br>
