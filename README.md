@@ -112,7 +112,7 @@ There have been several changes to fan appeal values of show and single producti
 
 ### What's included in the mod JSON files?
 - Special notification when the Indiscreet trait is activated.
-- Drama business proposals get double fans.
+- Drama business proposals get triple fans.
 - Changes to tooltip for new fatigue behavior of theaters.
 - Changes to tooltip for streaming profit of theaters.
 - Changes to tooltip of single PVs to describe success rate.
