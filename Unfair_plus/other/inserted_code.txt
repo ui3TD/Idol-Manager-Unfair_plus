@@ -440,6 +440,12 @@ private void SetSales()
 	this.SetNewFans(num3);
 }
 
+Theaters._theater GetNumberofVisitors
+if (this.Doing_Now == Theaters._theater._schedule._type.manzai)
+{
+	num /= 2f;
+}
+
 data_girls.girls GetExpectedSalary
 int result = 40000;
 
