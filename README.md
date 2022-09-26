@@ -104,7 +104,7 @@ There have been several changes to fan appeal values of show and single producti
 - Girls with Underdog trait have +20 to all stats if the latest single does not top the charts. The modifier lasts until the next single release.
 - Stat changes are not displayed on the profile cards, but are calculated when creating Shows, Concerts, Business Proposals, and Singles.
 - Girls with Lone Wolf trait have +40 to all stats when they are the only one assigned to a show.
-- Girls with Photogenic trait have +1x to photoshoots.
+- Girls with Photogenic trait have +100% to photoshoots before other modifiers.
 - Girls with Maternal trait have positive relationships with those younger than them by default and these relationships develop naturally 4x faster.
 - Girls with Precocious trait have positive relationships with those older than them by default and these relationships develop naturally 4x faster.
 - Girls with Arrogant trait have all relationships naturally rapidly decrease after they center a single until the next single release.
