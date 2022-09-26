@@ -50,10 +50,9 @@ Bug Fixes:
 - Fixed senbatsu stats calculation so it doesn't punish you if you don't have enough idols to fill all rows.
 - Fixed Concert revenue formula so that it shows accurate estimated values.
 - Fixed Theater so that it uses stamina.
-- Fixed Theater so that it does not generate money on days off.
+- Fixed Theater so that money tooltip includes subscription earnings, excludes days off, and includes 7 days instead of 6.
 - Fixed Theater so that revenue stats are not offset by one day.
 - Fixed Theater so that average stats ignore days off.
-- Fixed Theater so that money tooltip includes subscription earnings.
 - Fixed so that when girls dating within the group break up, their relationship status is no longer known.
 
 Hard Mode (unfair+):

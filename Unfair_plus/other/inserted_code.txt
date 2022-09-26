@@ -455,11 +455,11 @@ else if (schedule.FanType == resources.fanType.casual)
 }
 else if (schedule.FanType == resources.fanType.adult || schedule.FanType == resources.fanType.youngAdult)
 {
-	num = 1.1f;
+	num = 0.95f;
 }
 else if (schedule.FanType == resources.fanType.teen)
 {
-	num = 1f;
+	num = 0.9f;
 }
 else if (schedule.FanType != resources.fanType.hardcore)
 {

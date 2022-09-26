@@ -58,6 +58,7 @@ There have been several changes to fan appeal values of show and single producti
 - Concert Club venue had its hype multiplier reduced. Previously, clubs had higher hype than other venues.
 - Theater show sales and subscriptions start to decay after 30 days since the last single due to staleness. It's not so severe in easy/normal mode, but more severe in Unfair+.
 - Theater subscription revenue decreased by 90%. Most of the revenue goes to the streaming service provider.
+- Theater attendance for Manzais halved to scale with stamina cost compared to performances.
 - Show media platform appeal values reduced to encourage usage regardless of group themes.
 - Staff cannot be fired using scandal points within the first month so that you can't just hire and immediately fire staff to get rid of points.
 - World tours are limited to 100 stamina so you can't go to all the countries at once.
@@ -70,6 +71,7 @@ There have been several changes to fan appeal values of show and single producti
 - Single PVs have success chances increased by 33% so that they are more reliable in mid to late game but the crit success bonus has decreased to balance it.
 - Fake Scandal crit success bonus increased significantly so that it's more enticing. It is the fastest single marketing method to grow fans.
 - When releasing a single, the penalty for a decrease in fame and appeal now only considers past singles of the same group, so that sister groups are more independent.
+- Theater attendance increased for 'everyone', 'casual' and age groups so that it is balanced with 'male' and 'female'.
 - Training vocal/dance stamina reduced to 1 pt/day so that it's a bit more worth it. It takes on average 2 years to recoup on opportunity costs. It's more efficient if the girl is lower in skill or if the girl is in the front of senbatsu.
 - World tours give 3.5x more fans to compensate for stamina limitation.
 - Single genres/lyrics/choreo appeals overhauled so that none are clearly better, and so that negative effects are reduced to encourage trying new combinations.
