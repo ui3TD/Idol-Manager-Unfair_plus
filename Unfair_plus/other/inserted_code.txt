@@ -441,6 +441,34 @@ private void SetSales()
 }
 
 Theaters._theater GetNumberofVisitors
+if (schedule.FanType_Everyone && this.Doing_Now == Theaters._theater._schedule._type.manzai)
+{
+	num = 0.2f;
+}
+else if (schedule.FanType_Everyone)
+{
+	num = 0.3f;
+}
+else if (schedule.FanType == resources.fanType.casual)
+{
+	num = 0.65f;
+}
+else if (schedule.FanType == resources.fanType.adult || schedule.FanType == resources.fanType.youngAdult)
+{
+	num = 1.1f;
+}
+else if (schedule.FanType == resources.fanType.teen)
+{
+	num = 1f;
+}
+else if (schedule.FanType != resources.fanType.hardcore)
+{
+	num = 0.75f;
+}
+if (!schedule.FanType_Everyone && this.Doing_Now == Theaters._theater._schedule._type.manzai && schedule.FanType != resources.fanType.hardcore)
+{
+	num *= 0.75f;
+}
 if (this.Doing_Now == Theaters._theater._schedule._type.manzai)
 {
 	num /= 2f;
