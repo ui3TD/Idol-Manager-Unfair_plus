@@ -31,7 +31,7 @@ There have been several changes to fan appeal values of show and single producti
 1. Copy mod folder into the mod directory. On Windows, that's c:\Users\username\AppData\LocalLow\Glitch Pitch\Idol Manager\Mods\
 2. Navigate to the \IM_Data\Managed\ directory of Idol Manager.
 3. Rename your existing "Assembly-CSharp.dll" to "Assembly-CSharp_orig.dll" to keep it as a back-up.
-4. Copy "Assembly-CSharp.dll" from the "other" folder of this mod into the \IM_Data\Managed\ directory of Idol Manager.
+4. Copy "Assembly-CSharp.dll" into the \IM_Data\Managed\ directory of Idol Manager.
 5. Play the game.
 
 ### Uninstallation Instructions:
