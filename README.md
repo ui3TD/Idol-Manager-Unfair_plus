@@ -37,10 +37,14 @@ There have been several changes to fan appeal values of show and single producti
 5. Play the game.
 
 ### Uninstallation Instructions:
+#### Quick Uninstallation Instructions:
+1. Disable the mod in Idol Manager.
+
+#### Full Uninstallation Instructions:
 1. Navigate to the \IM_Data\Managed\ directory of Idol Manager.
 2. Find "Assembly-CSharp.dll" and "Assembly-CSharp_orig.dll" files
 3. Delete the "Assembly-CSharp.dll" file and rename the "Assembly-CSharp_orig.dll" file to replace it.
-4. Disable or delete the mod in Idol Manager.
+4. Delete the mod in the mod directory.
 
 ## Changes
 ### Quality of Life (All difficulty modes):
