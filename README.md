@@ -87,6 +87,8 @@ There have been several changes to fan appeal values of show and single producti
 - Fixed Theater so that money tooltip includes subscription earnings, excludes days off, and includes 7 days instead of 6.
 - Fixed Theater so that revenue stats are not offset by one day.
 - Fixed Theater so that average stats ignore days off.
+- Fixed Theater so that revenue gets added to girls earnings.
+- Fixed Cafe weekly revenue so that it includes 7 days instead of 6.
 - Fixed so that when girls dating each other break up, their relationship status is no longer known.
 
 ### Unfair+ Difficulty:
@@ -100,7 +102,7 @@ There have been several changes to fan appeal values of show and single producti
 
 ### Trait Implementations (All difficulty modes):
 - Girls with Live Fast trait have double the rate of stat decreases after their peak age, both in random decreases and on birthdays.
-- Girls with Trendy trait have double the appeal to non-adults and half the appeal to adults.
+- Girls with Trendy trait have 1.5x the appeal to non-adults and 0.5x the appeal to adults.
 - Girls with Anxiety trait have -10 to all stats when a special event is waiting.
 - Girls with Clumsy trait have +30 to funny and -30 to dance.
 - Girls with Complacent trait have -20 to vocal and dance if they were center in the latest single.
@@ -117,7 +119,7 @@ There have been several changes to fan appeal values of show and single producti
 - Girls with Meme Queen trait get +10 to all stats for internet shows and get +10% success rate and +5% crit success rate when participating in viral marketing campaigns (does not stack).
 - Girls with Annoying trait cause other members to spend 1.2x physical stamina in shows.
 - Girls with Misandry trait have a 20% chance of receiving bad opinions from Male fans when participating in a single with handshakes.
-- Girls with Perfectionist trait get -20 to mental stamina when world tours end in negative profit, or when they participate in concerts with less than 100% hype.
+- Girls with Perfectionist trait get -20 to mental stamina when world tours end with less than 80% attendance, or when they participate in concerts with less than 100% hype.
 - If there is an Indiscreet member, girls in dating relationships unknown to the player have a 2% chance of having the relationship revealed each week.
 - When the relationship is revealed, the girls involved lose 30 mental stamina.
 - If the group forbids dating then a scandal point is added for each girl.
