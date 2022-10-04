@@ -61,6 +61,7 @@ There have been several changes to fan appeal values of show and single producti
 - Theater show sales and subscriptions start to decay after 30 days since the last single due to staleness. It's not so severe in easy/normal mode, but more severe in Unfair+.
 - Theater subscription revenue decreased by 90%. Most of the revenue goes to the streaming service provider.
 - Theater attendance for Manzais halved to scale with stamina cost compared to performances.
+- Theater revenue added to girls' weekly earnings so that it impacts salary satisfaction.
 - Show media platform appeal values reduced to encourage usage regardless of group themes.
 - Staff cannot be fired using scandal points within the first month so that you can't just hire and immediately fire staff to get rid of points.
 - World tours are limited to 100 stamina so you can't go to all the countries at once.
