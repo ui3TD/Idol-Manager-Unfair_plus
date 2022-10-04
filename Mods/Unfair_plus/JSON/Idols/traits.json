@@ -102,7 +102,7 @@
 		type: 			"Trendy",
 		title: 			"Trendy",
 		intro:			"intro_trendy",
-		description:	"Double appeal with teen and young adult fans, Half appeal with adult fans"
+		description:	"1.5x appeal with teen and young adult fans, 0.5x appeal with adult fans"
 	},
 	{
 		type: 			"Perfectionist",

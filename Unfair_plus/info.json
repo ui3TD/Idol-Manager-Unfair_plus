@@ -1,7 +1,0 @@
-{
-  "Title": "Unfair_plus",
-  "Description": "This mod itself only adds notification messages and changes to some text in-game. This mod itself has no significant gameplay effects unless the included Assembly-Csharp.dll file is installed. Please see the README for instructions.",
-  "Author": "anon",
-  "Version": "1.1",
-  "Tags": ["gameplay"]
-}
