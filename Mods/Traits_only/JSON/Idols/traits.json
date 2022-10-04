@@ -108,7 +108,7 @@
 		type: 			"Perfectionist",
 		title: 			"Perfectionist",
 		intro:			"intro_perfectionist",
-		description:	"-20 to mental stamina when an event they participated in goes poorly (tours with no profit or concerts without 100% hype)",
+		description:	"-20 to mental stamina when an event they participated in goes poorly (tours with less than 80% attendance or concerts without 100% hype)",
 		positive:		false
 	},
 	{
