@@ -46,7 +46,7 @@ There have been several changes to fan appeal values of show and single producti
 
 ## Changes
 ### Quality of Life (All difficulty modes):
-- Time passes 5x faster to decrease downtime.
+- Press the '4' key or click on the fast forward button twice to toggle 5x speed.
 - Home row of keyboard (asdfg...) are hotkeys to open each sidebar tab.
 - Show genres renamed to make more sense.
 - Dating status is visible for underage members so that the player can track gossip. Player cannot flirt with them though.
@@ -89,6 +89,8 @@ There have been several changes to fan appeal values of show and single producti
 - Fixed Theater so that revenue gets added to girls earnings.
 - Fixed Cafe weekly revenue so that it includes 7 days instead of 6.
 - Fixed so that when girls dating each other break up, their relationship status is no longer known.
+- Fixed fan age pie charts to show correct proportions.
+- Fixed world tour revenue text color to consider savings.
 
 ### Unfair+ Difficulty:
 - In Unfair+, there is significant customer churn rate. You lose fans each day and it's very difficult to break into the big leagues. At 100k fans, you can expect to lose 5% in a month unless you take measures to grow.
@@ -98,6 +100,10 @@ There have been several changes to fan appeal values of show and single producti
 - In Unfair+, audience of TV and Radio shows decrease with fatigue so you're more motivated to update them or create new shows. New fan contribution to audience decreases proportional to fatigue squared. Internet shows aren't affected.
 - In Unfair+, sister group new fans are reduced 5x to be more balanced.
 - In Unfair+, player relationships with girls decay each week so you have to talk to them sometimes. -2 to +1 to influence each week depending on salary satisfaction. -1 each week to romance (lose a level every ~2 years). -2 each week to friendship (lose a level every ~1 year).
+- In Unfair+, Promotion lvl 3 requires 6 episodes of an internet show instead of just 1
+- In Unfair+, Promotion lvl 4 requires 6 episodes of a radio show instead of just 1, and peak internet show audience of 6000 instead of 1000
+- In Unfair+, Promotion lvl 6 requires 6 episodes of a TV show instead of just 1
+- In Unfair+, Promotion lvl 9 requires 3 idols with 9 fame instead of 5 fame
 
 ### Trait Implementations (All difficulty modes):
 - Girls with Live Fast trait have double the rate of stat decreases after their peak age, both in random decreases and on birthdays.
@@ -122,20 +128,3 @@ There have been several changes to fan appeal values of show and single producti
 - If there is an Indiscreet member, girls in dating relationships unknown to the player have a 2% chance of having the relationship revealed each week.
 - When the relationship is revealed, the girls involved lose 30 mental stamina.
 - If the group forbids dating then a scandal point is added for each girl.
-
-### What's included in the mod JSON files?
-- Special notification when the Indiscreet trait is activated.
-- Drama business proposals get triple fans.
-- Changes to tooltip for new fatigue behavior of theaters.
-- Changes to tooltip for streaming profit of theaters.
-- Changes to tooltip of single PVs to describe success rate.
-- Change to tooltip for firing staff to describe 30 day minimum for scandal points.
-- Change to fan tooltip to include Churn Rate.
-- Change to world tour country tooltips to include stamina cap.
-- Updates to implemented trait descriptions to explain effects.
-- Updates to MC descriptions to explain new effects.
-- Updates to MC costs to balance effects.
-- Edit to hard mode name and description.
-- Update locked concert tooltip to describe requirement to sell out
-- Changes to single lyrics, genre and choreo appeal values
-- Changes to show media platforms and genres
