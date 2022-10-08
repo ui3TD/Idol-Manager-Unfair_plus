@@ -127,3 +127,9 @@ There have been several changes to fan appeal values of show and single producti
 - Girls with Perfectionist trait get -20 to mental stamina when world tours end with less than 80% attendance, or when they participate in concerts with less than 100% hype.
 - If there is an Indiscreet member, girls in dating relationships unknown to the player have a 2% chance of having the relationship revealed each week.
 - When the relationship is indiscreetly revealed, the girls involved lose 30 mental stamina. If the group forbids dating then a scandal point is added for each girl.
+
+# Other Mods
+
+Check out my unlisted mods on Steam Workshop that are 100% compatible:
+
+- National Tour: https://steamcommunity.com/sharedfiles/filedetails/?id=2872425710
