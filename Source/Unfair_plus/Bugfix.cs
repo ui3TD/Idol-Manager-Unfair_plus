@@ -12,7 +12,7 @@ namespace Unfair_plus_v2_0
         public static float GetStaminaCostPostfix(Theaters._theater._schedule._type Type, float __return)
         {
             float output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 float num = 0f;
                 if (Type == Theaters._theater._schedule._type.performance)
@@ -38,7 +38,7 @@ namespace Unfair_plus_v2_0
         // Prefix: if(!Unfair_plus_v2_0.Bugfix.CompleteDayPrefix()) return;
         public static bool CompleteDayPrefix()
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 foreach (Theaters._theater theater in Theaters.Theaters_)
                 {
@@ -55,7 +55,7 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.Bugfix.CompleteDayPostfix();
         public static void CompleteDayPostfix()
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 foreach (Theaters._theater theater in Theaters.Theaters_)
                 {
@@ -104,7 +104,7 @@ namespace Unfair_plus_v2_0
         public static int GetAvgAttendancePostfix(int __return, Theaters._theater __this)
         {
             int output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 float num = 0f;
                 float num2 = 7f;
@@ -143,7 +143,7 @@ namespace Unfair_plus_v2_0
         public static int GetAvgRevenuePostfix(int __return, Theaters._theater __this)
         {
             int output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 float num = 0f;
                 float num2 = 7f;
@@ -182,7 +182,7 @@ namespace Unfair_plus_v2_0
         public static long TheatersGetLastWeekEarningPostfix(long __return)
         {
             long output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 foreach (Theaters._theater theater in Theaters.Theaters_)
                 {
@@ -206,7 +206,7 @@ namespace Unfair_plus_v2_0
         public static int CafesGetLastWeekEarningPostfix(int __return)
         {
             int output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 foreach (Cafes._cafe cafe in Cafes.Cafes_)
                 {
@@ -225,7 +225,7 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.Bugfix.BreakupPostfix(this);
         public static void BreakupPostfix(Relationships._relationship __this)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (__this.Dating)
                 {
@@ -245,7 +245,7 @@ namespace Unfair_plus_v2_0
         {
             long output = __return;
 
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 float hype = __this.GetHype() * 100f;
                 if (hype > 100f)
@@ -272,7 +272,7 @@ namespace Unfair_plus_v2_0
         {
             int output = num;
 
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 output = Mathf.FloorToInt(_val * 100f);
             }
@@ -289,7 +289,7 @@ namespace Unfair_plus_v2_0
         public static float SenbatsuCalcParamInfix(float num3, Groups._group Group, singles._single __this)
         {
             float output = num3;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (Group == null)
                 {

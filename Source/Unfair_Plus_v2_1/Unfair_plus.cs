@@ -49,7 +49,7 @@ namespace Unfair_plus_v2_1
         public static string GetPromotionDescriptionPostfix(string __return, int lvl, int actualLvl)
         {
             string output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (staticVars.IsHard())
                 {

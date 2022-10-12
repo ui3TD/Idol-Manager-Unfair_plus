@@ -12,7 +12,7 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.Unfair_plus.Graduation_Date_UpdatePostFix(this,true)
         public static bool Graduation_Date_UpdatePostFix(data_girls.girls __this, bool __return)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 int salarySatisfaction_Percentage = __this.GetSalarySatisfaction_Percentage();
                 if (__this.status == data_girls._status.announced_graduation)
@@ -46,7 +46,7 @@ namespace Unfair_plus_v2_0
         public static int GetNewFansPerSinglePostFix(int __return)
         {
             int output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (staticVars.IsHard())
                 {
@@ -62,7 +62,7 @@ namespace Unfair_plus_v2_0
         // Prefix: if(!Unfair_plus_v2_0.Unfair_plus.UpdateRelationshipBasedOnSalaryPrefix(this)) return;
         public static bool UpdateRelationshipBasedOnSalaryPrefix(data_girls.girls __this)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (staticVars.IsHard())
                 {
@@ -98,7 +98,7 @@ namespace Unfair_plus_v2_0
         // Prefix: 
         public static bool OnNewDayPrefix(resources __this)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 __this.AddMoney((long)__this.Money_DailyProfit());
                 resources.Add(resources.type.buzz, (long)(__this.Buzz_Daily() - __this.GetDailyBuzzReduction()));
@@ -115,7 +115,7 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.Unfair_plus.RenderFanChangePostfix(this);
         public static void RenderFanChangePostfix(tooltip_fans __this)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (staticVars.IsHard())
                 {
@@ -145,7 +145,7 @@ namespace Unfair_plus_v2_0
         public static float SetSalesInfix(float num2, Shows._show __this)
         {
             float output = num2;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 float num = (float)(resources.GetFameLevel() + __this.fame[__this.fame.Count - 1]);
                 if (num < 1f)
@@ -172,7 +172,7 @@ namespace Unfair_plus_v2_0
         public static long GetExpectedSalary_TotalPostfix(long __return, data_girls.girls __this)
         {
             long output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (staticVars.IsHard())
                 {
@@ -194,7 +194,7 @@ namespace Unfair_plus_v2_0
         // Prefix: if (!Unfair_plus_v2_0.Unfair_plus.GetVenueCapacityPrefix(val, ref _return)) return _return;
         public static bool GetVenueCapacityPrefix(SEvent_Concerts._venue val, ref int __return)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (staticVars.IsHard() && val == SEvent_Concerts._venue.tokyoColiseum)
                 {
@@ -212,7 +212,7 @@ namespace Unfair_plus_v2_0
         // Prefix: if (!Unfair_plus_v2_0.Unfair_plus.GetVenueBaseCostPrefix(val, ref _return)) return _return;
         public static bool GetVenueBaseCostPrefix(SEvent_Concerts._venue val, ref int __return)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (staticVars.IsHard() && val == SEvent_Concerts._venue.tokyoColiseum)
                 {

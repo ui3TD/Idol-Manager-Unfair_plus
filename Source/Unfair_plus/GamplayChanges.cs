@@ -12,7 +12,8 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.GameplayChanges.Time_SetStatePostfix();
         public static void Time_SetStatePostfix()
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (staticVars.timeState == mainScript._time_state.normal)
                 {
@@ -33,7 +34,7 @@ namespace Unfair_plus_v2_0
         public static float DoGirlTrainingInfix(float num)
         {
             float trainingIncrement = num;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 trainingIncrement /= 3;
             }
@@ -47,7 +48,7 @@ namespace Unfair_plus_v2_0
         public static int GetIdolsNeededForNewGroupPostFix(int __return)
         {
             int output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 output = Groups.CountActiveGroups() + 1;
             }
@@ -60,7 +61,7 @@ namespace Unfair_plus_v2_0
         // Prefix: if(!Unfair_plus_v2_0.GameplayChanges.UpdatePreFix()) return;
         public static bool UpdatePreFix()
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (mainScript.IsBlockingHotkeys())
                 {
@@ -116,7 +117,7 @@ namespace Unfair_plus_v2_0
         public static bool CanFirePostfix(staff._staff __this, bool __return)
         {
             bool output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if ((staticVars.dateTime - __this.HireDate).Days < 30)
                 {
@@ -133,7 +134,7 @@ namespace Unfair_plus_v2_0
         public static float GetPriceCoeffPostfix(int Price, Theaters._theater __this, float __return)
         {
             float output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (Price <= 30000)
                 {
@@ -164,7 +165,7 @@ namespace Unfair_plus_v2_0
         public static long GetSubRevenuePostfix(long __return)
         {
             long output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 output = (long)Mathf.Round(output * 0.1f);
             }
@@ -179,7 +180,7 @@ namespace Unfair_plus_v2_0
         public static float GetNumberofVisitorsPostFix(float num, Theaters._theater __this)
         {
             float output = num;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 Theaters._theater._schedule schedule = __this.GetSchedule();
                 if (schedule.FanType_Everyone && __this.Doing_Now == Theaters._theater._schedule._type.manzai)
@@ -227,7 +228,7 @@ namespace Unfair_plus_v2_0
         public static int SetSalesInfix(int num7, Shows._show __this)
         {
             int output = num7;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 float mcCoeff = 1f;
                 if (__this.mc != null)
@@ -254,7 +255,7 @@ namespace Unfair_plus_v2_0
         public static int GetExpectedSalaryPostfix(int __return, data_girls.girls __this)
         {
             int output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 float num = (float)__this.GetFameLevel();
                 if (num < 1f)
@@ -272,7 +273,7 @@ namespace Unfair_plus_v2_0
         public static data_girls.girls GenerateGirlPostfix(data_girls.girls __return)
         {
             data_girls.girls output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 output.salary = 20000;
 
@@ -300,7 +301,7 @@ namespace Unfair_plus_v2_0
         public static string GetPartnerStringPostfix(string __return, data_girls.girls __this)
         {
             string output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (!__this.Is_AOC())
                 {
@@ -386,7 +387,7 @@ namespace Unfair_plus_v2_0
         public static float GetSuccessChancePostfix(float __return, singles._param __this, Single_Marketing_Roll._result Result, singles._single Single = null)
         {
             float output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (Single != null)
                 {
@@ -464,7 +465,7 @@ namespace Unfair_plus_v2_0
         public static bool GetSuccessModifierPrefix(ref float __return, singles._param __this, Single_Marketing_Roll._result Result, bool Secondary, int Level)
         {
             bool output = true;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (__this.Special_Type == singles._param._special_type.fake_scandal)
                 {
@@ -502,7 +503,7 @@ namespace Unfair_plus_v2_0
         // Replace: Unfair_plus_v2_0.GameplayChanges.AddOpinionReplace(single);
         public static void AddOpinionReplace(singles._single single)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 single.ReleaseData.FanAppeal = single.GetAppealForOpinion();
                 single.ReleaseData.FanAppeal.Sort(new Comparison<singles._fanAppeal>(CompareAppeal));
@@ -587,7 +588,7 @@ namespace Unfair_plus_v2_0
         {
             List<singles._single> output = latestReleasedSingles;
 
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 output = GetLatestReleasedSingles(3, single.GetGroup());
             }
@@ -602,7 +603,7 @@ namespace Unfair_plus_v2_0
         public static int GetNewFansByAttendancePostfix(int __return)
         {
             int output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 output = Mathf.RoundToInt(output * 3.5f);
             }
@@ -616,7 +617,7 @@ namespace Unfair_plus_v2_0
         // Prefix: if(!Unfair_plus_v2_0.GameplayChanges.SelectCountryPrefix(Country,this)) return;
         public static bool SelectCountryPrefix(SEvent_Tour.country Country, SEvent_Tour.tour __this)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 SEvent_Tour.tour.selectedCountry country = __this.GetCountry(Country);
                 if (country == null)
@@ -639,7 +640,7 @@ namespace Unfair_plus_v2_0
         public static string SetTooltipInfix(string text3, Tour_Country TourCountry)
         {
             string output = text3;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 SEvent_Tour.country country = TourCountry.Country;
                 SEvent_Tour.tour tour = TourCountry.TourPopup.Tour;
@@ -664,7 +665,7 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.GameplayChanges.OnClickPostfix(this);
         public static void OnClickPostfix(Tour_Country __this)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 Tour_Country[] componentsInChildren = __this.TourPopup.CountriesContainer.transform.GetComponentsInChildren<Tour_Country>();
                 for (int i = 0; i < componentsInChildren.Length; i++)
@@ -683,7 +684,7 @@ namespace Unfair_plus_v2_0
         {
             float output = __return;
 
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 int num = __this.TicketPrice;
                 int num2 = 10000;
@@ -711,7 +712,7 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.GameplayChanges.RecalcProjectedValuesPostfix(this);
         public static void RecalcProjectedValuesPostfix(SEvent_Concerts._concert __this)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (__this.Venue == SEvent_Concerts._venue.club && __this.Hype > 100f)
                 {
@@ -739,7 +740,7 @@ namespace Unfair_plus_v2_0
         // Prefix: if(!Unfair_plus_v2_0.GameplayChanges.StartConcertPrefix(this,this.popupManager)) return;
         public static bool StartConcertPrefix(SEvent_Concerts __this, PopupManager popupManager)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 SpecialEvents_Manager.GetEvent(SpecialEvents_Manager._type.Concert).SetCooldown();
                 SpecialEvents_Manager.GetEvent(SpecialEvents_Manager._type.Concert).Status = SpecialEvents_Manager._specialEvent._status.normal;
@@ -759,7 +760,7 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.GameplayChanges.FinishPostfix(this);
         public static void FinishPostfix(SEvent_Concerts._concert __this)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus"))
             {
                 if (__this.ProjectedValues.Actual_Attendance >= 1f && __this.ProjectedValues.GetActualProfit() >= 0L)
                 {

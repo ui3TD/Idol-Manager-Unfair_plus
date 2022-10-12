@@ -13,7 +13,7 @@ namespace Unfair_plus_v2_0
         public static int AgeDeteriorationInfix(int num, data_girls.girls __this)
         {
             int output = num;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 if (__this.trait == traits._trait._type.Live_fast)
                 {
@@ -32,7 +32,7 @@ namespace Unfair_plus_v2_0
         {
             float output = num3;
 
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 if (__this.Girl.trait == traits._trait._type.Live_fast)
                 {
@@ -58,7 +58,7 @@ namespace Unfair_plus_v2_0
         public static float RecalcFanAppealInfix(float num, singles._fanAppeal __fanAppeal, data_girls.girls __this)
         {
             float output = num;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 if (__this.trait == traits._trait._type.Trendy)
                 {
@@ -82,7 +82,7 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.Traits_only.UpdateDatingStatusPostfix(this);
         public static void UpdateDatingStatusPostfix(data_girls.girls __this)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 if (mainScript.chance(2) && __this.DatingData.Is_Taken() && !__this.DatingData.Is_Partner_Status_Known)
                 {
@@ -129,7 +129,7 @@ namespace Unfair_plus_v2_0
         {
             bool output = __return;
 
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 if (mainScript.chance(2) && __this.Dating && !__this.IsRelationshipKnown())
                 {
@@ -180,7 +180,7 @@ namespace Unfair_plus_v2_0
         public static float GetGirlCoeffPostfix(data_girls.girls _girl, float __return, business._proposal __this)
         {
             float output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 if (__this.type == business._type.photoshoot && _girl.trait == traits._trait._type.Photogenic)
                 {
@@ -203,7 +203,7 @@ namespace Unfair_plus_v2_0
         {
             float output = val;
 
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 output = _girl.getParam(__this.skill).val + GetTraitModifier(_girl, __this.skill);
                 if (output < 0f)
@@ -223,7 +223,7 @@ namespace Unfair_plus_v2_0
         public static float GetAverageParamInfix(float num, data_girls._paramType Type, List<data_girls.girls> Girls, data_girls.girls __girls)
         {
             float output = num;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 output += GetTraitModifier(__girls, Type, Girls);
                 if (output < 0)
@@ -242,7 +242,7 @@ namespace Unfair_plus_v2_0
         public static float SenbatsuCalcParamInfix(float num5, data_girls._paramType type, data_girls.girls girls)
         {
             float output = num5;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 output += GetTraitModifier(girls, type);
                 if (output < 0)
@@ -261,7 +261,7 @@ namespace Unfair_plus_v2_0
         {
             int output = __return;
 
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 if (__this.Center != null)
                 {
@@ -289,7 +289,7 @@ namespace Unfair_plus_v2_0
         {
             int output = __return;
 
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 foreach (data_girls.girls girls in __this.Girls)
                 {
@@ -314,7 +314,7 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.Traits_only.InitializePostfix(this);
         public static void InitializePostfix(Relationships._relationship __this)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 int age = __this.Girls[0].GetAge();
                 int age2 = __this.Girls[1].GetAge();
@@ -344,7 +344,7 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.Traits_only.Do_DynamicPostfix();
         public static void Do_DynamicPostfix()
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 foreach (Relationships._relationship relationship in Relationships.RelationshipsData)
                 {
@@ -400,7 +400,7 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.Traits_only.RecalcPostfix(this);
         public static void RecalcPostfix(Relationships._relationship __this)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 if (__this.Ratio < 0.5f)
                 {
@@ -421,7 +421,7 @@ namespace Unfair_plus_v2_0
         public static float Shows_showAddCastParamInfix(float val, List<data_girls.girls> girlList, Shows._show __this)
         {
             float output = val;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 float counter = 0;
                 float sum = 0f;
@@ -455,7 +455,7 @@ namespace Unfair_plus_v2_0
         public static float Show_PopupAddCastParamInfix(float val, List<data_girls.girls> girlList, Shows._param._media_type? medium)
         {
             float output = val;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 float counter = 0;
                 float sum = 0f;
@@ -487,7 +487,7 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.Traits_only.SetParamPostfix(this,this.castType);
         public static void SetParamPostfix(Show_Popup __this, Shows._show._castType? castType)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 if (castType != null)
                 {
@@ -504,7 +504,7 @@ namespace Unfair_plus_v2_0
         public static float GetSuccessChancePostfix(float __return, singles._param __this, Single_Marketing_Roll._result Result, singles._single Single)
         {
             float output = __return;
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 if (Single != null && __this.Special_Type == singles._param._special_type.viral_campaign)
                 {
@@ -542,7 +542,7 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.Traits_only.SetStaminaPostfix(this);
         public static void SetStaminaPostfix(Shows._show __this)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 List<data_girls.girls> cast = __this.GetCast();
                 float staminaCost = __this.GetStaminaCost();
@@ -581,7 +581,7 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.Traits_only.ReleaseSinglePostfix(single);
         public static void ReleaseSinglePostfix(singles._single single)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 foreach (data_girls.girls girls in single.girls)
                 {
@@ -607,7 +607,7 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.Traits_only.FinishTourPostfix(this);
         public static void FinishTourPostfix(SEvent_Tour __this)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 List<data_girls.girls> activeGirls = data_girls.GetActiveGirls(null);
                 foreach (data_girls.girls girls in activeGirls)
@@ -627,7 +627,7 @@ namespace Unfair_plus_v2_0
         // Postfix: Unfair_plus_v2_0.Traits_only.FinishPostfix(this);
         public static void FinishPostfix(SEvent_Concerts._concert __this)
         {
-            if (staticVars.Settings.IsModEnabled("Unfair_plus") || staticVars.Settings.IsModEnabled("Traits_only"))
+            if (Unfair_plus_v2_1_1.BugFix.IsModEnabled("Unfair_plus") || Unfair_plus_v2_1_1.BugFix.IsModEnabled("Traits_only"))
             {
                 foreach (data_girls.girls girls in __this.GetGirls(true))
                 {
